@@ -11,6 +11,7 @@ interface CallImageLinkProps {
   className?: string;
   location: string;
   whatsappMessage?: string;
+  callOnly?: boolean;
 }
 
 const defaultWhatsAppMessage =
@@ -21,7 +22,21 @@ export function CallImageLink({
   className,
   location,
   whatsappMessage = defaultWhatsAppMessage,
+  callOnly = false,
 }: CallImageLinkProps) {
+  if (callOnly) {
+    return (
+      <a
+        href={PHONE_TEL}
+        onClick={() => trackEvent("click_to_call", { location })}
+        className={cn("group/call block", className)}
+        aria-label="Call Al-Awan Furniture"
+      >
+        {children}
+      </a>
+    );
+  }
+
   const whatsappHref = buildWhatsAppLink(whatsappMessage);
 
   const handleImageCall = () => {

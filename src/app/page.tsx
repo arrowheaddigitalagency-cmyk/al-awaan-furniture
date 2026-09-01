@@ -16,6 +16,7 @@ import { HomeShowcaseGallery } from "@/components/home/HomeShowcaseGallery";
 import { TrustStrip } from "@/components/service/TrustStrip";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
+import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { services } from "@/data/services";
 import { getFeaturedProjects } from "@/data/projects";
 
@@ -59,19 +60,21 @@ export default function HomePage() {
                   className={isLarge ? "md:col-span-7" : "md:col-span-5"}
                 >
                   <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
-                    <div
-                      className={`image-flash image-glow relative overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
+                    <CallImageLink
+                      callOnly
+                      location="home_service_card"
+                      className={`image-flash image-glow relative block overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
                     >
                       <Image
                         src={service.heroImage}
                         alt={service.name}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
                       />
                       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10" />
                       <div className="absolute inset-0 z-[1] ring-1 ring-inset ring-white/10" />
-                    </div>
+                    </CallImageLink>
 
                     <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8 pointer-events-none">
                       <span className="inline-block rounded-full border border-bronze/30 bg-bronze/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-bronze-light backdrop-blur-sm">
@@ -131,13 +134,17 @@ export default function HomePage() {
             {projects.map((project) => (
               <StaggerItem key={project.id} variant="fade-up">
                 <article className="premium-card group image-glow overflow-hidden">
-                  <div className="image-flash relative aspect-[4/5] overflow-hidden">
+                  <CallImageLink
+                    callOnly
+                    location="home_project_card"
+                    className="image-flash relative block aspect-[4/5] overflow-hidden"
+                  >
                     <Image
                       src={project.images[0]}
                       alt={project.title}
                       fill
                       sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover/call:scale-105"
                     />
                     <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
@@ -148,7 +155,7 @@ export default function HomePage() {
                         {project.title}
                       </h3>
                     </div>
-                  </div>
+                  </CallImageLink>
                 </article>
               </StaggerItem>
             ))}
@@ -166,7 +173,11 @@ export default function HomePage() {
         <div className="container-wide">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <FadeIn variant="fade-right" className="relative">
-              <div className="image-flash image-glow relative aspect-[4/5] overflow-hidden rounded-lg">
+              <CallImageLink
+                callOnly
+                location="home_about_image"
+                className="image-flash image-glow relative block aspect-[4/5] overflow-hidden rounded-lg"
+              >
                 <Image
                   src="/images/hero/hero-bedroom.jpg"
                   alt="Custom bedroom furniture by Al-Awan Furniture"
@@ -174,13 +185,17 @@ export default function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
-              </div>
+              </CallImageLink>
               <FadeIn
                 variant="scale"
                 delay={0.3}
                 className="absolute -bottom-6 -right-4 hidden md:block lg:-right-8"
               >
-                <div className="image-flash image-glow relative aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56">
+                <CallImageLink
+                  callOnly
+                  location="home_about_image_accent"
+                  className="image-flash image-glow relative block aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56"
+                >
                   <Image
                     src="/images/hero/hero-wardrobe.jpg"
                     alt="Custom wardrobe detail"
@@ -188,7 +203,7 @@ export default function HomePage() {
                     sizes="200px"
                     className="object-cover"
                   />
-                </div>
+                </CallImageLink>
               </FadeIn>
             </FadeIn>
 

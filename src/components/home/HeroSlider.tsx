@@ -100,12 +100,12 @@ export function HeroSlider() {
 
       <div className="relative z-10 flex min-h-[100svh] flex-col px-4 pb-4 pt-[4.5rem] md:px-0 md:pb-0 md:pt-0">
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden border border-ivory/15 md:border-0 md:overflow-visible">
-          <div className="container-wide relative flex min-h-0 flex-1 flex-col justify-center px-3 pb-3 pt-6 max-md:overflow-hidden md:min-h-[100svh] md:px-4 md:pb-32 md:pt-24">
+          <div className="container-wide relative flex min-h-0 min-w-0 flex-1 flex-col justify-center overflow-hidden px-3 pb-3 pt-6 max-md:overflow-hidden md:min-h-[100svh] md:px-4 md:pb-32 md:pt-24">
             <div className="grid items-center gap-10">
-              <div className="flex min-h-0 flex-col">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-bronze/50 bg-charcoal/40 px-4 py-2 backdrop-blur-md">
-                  <Sparkles className="h-3.5 w-3.5 text-bronze-light" />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-bronze-light">
+              <div className="flex min-h-0 min-w-0 flex-col">
+                <div className="mb-5 inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-bronze/50 bg-charcoal/40 px-3 py-2 backdrop-blur-md sm:px-4">
+                  <Sparkles className="h-3.5 w-3.5 shrink-0 text-bronze-light" />
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-bronze-light sm:text-[11px] sm:tracking-[0.18em]">
                     {heroContent.eyebrow}
                   </span>
                 </div>
