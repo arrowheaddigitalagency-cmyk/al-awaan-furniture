@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { services, serviceGroups } from "@/data/services";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
@@ -58,13 +58,7 @@ function MobileMenu({
             className="absolute right-0 top-0 flex h-full w-full max-w-sm flex-col overflow-y-auto bg-ivory shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-border px-6 py-5">
-              <Image
-                src="/logo-footer.png"
-                alt="Al-Awan Furniture"
-                width={260}
-                height={64}
-                className="h-9 w-auto max-w-[220px] object-contain sm:max-w-[240px]"
-              />
+              <BrandLogo frame="footer" className="max-w-[220px] sm:max-w-[240px]" />
               <button
                 type="button"
                 onClick={onClose}
@@ -205,18 +199,11 @@ export function Header() {
         <div className="container-wide">
           <div className="flex h-[4.25rem] items-center justify-between gap-4 lg:h-[4.75rem]">
             <Link href="/" className="relative z-50 shrink-0" aria-label="Al-Awan Furniture Home">
-              <span
-                className="inline-flex rounded-lg border border-bronze/25 bg-white px-2.5 py-1.5 shadow-sm shadow-black/5"
-              >
-                <Image
-                  src="/logo-footer.png"
-                  alt="Al-Awan Furniture"
-                  width={280}
-                  height={72}
-                  className="h-10 w-auto max-w-[230px] object-contain sm:max-w-[250px] lg:max-w-[270px] lg:h-11"
-                  priority
-                />
-              </span>
+              <BrandLogo
+                frame={isOverlay ? "header-overlay" : "header"}
+                className="max-w-[230px] transition-transform duration-300 hover:scale-[1.02] sm:max-w-[250px] lg:max-w-[270px]"
+                priority
+              />
             </Link>
 
             <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">

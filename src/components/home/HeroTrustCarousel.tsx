@@ -14,10 +14,7 @@ export function HeroTrustCarousel() {
   const loopItems = [...trustItems, ...trustItems];
 
   return (
-    <div className="relative mt-6 overflow-hidden md:mt-8">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-charcoal/90 to-transparent sm:w-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-charcoal/90 to-transparent sm:w-10" />
-
+    <div className="relative w-full overflow-hidden">
       <div className="trust-marquee flex w-max gap-2.5 sm:gap-3">
         {loopItems.map((label, i) => (
           <a

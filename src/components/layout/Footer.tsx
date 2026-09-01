@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { services } from "@/data/services";
 import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
@@ -30,15 +30,7 @@ export function Footer() {
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             <div className="lg:col-span-1">
               <Link href="/" className="inline-block">
-                <span className="inline-flex rounded-lg border border-bronze/30 bg-white px-3 py-2 shadow-md shadow-bronze/10">
-                  <Image
-                    src="/logo-footer.png"
-                    alt={SITE_NAME}
-                    width={280}
-                    height={80}
-                    className="h-12 w-auto max-w-[240px] object-contain sm:h-14 sm:max-w-[270px]"
-                  />
-                </span>
+                <BrandLogo frame="footer" className="max-w-[240px] sm:max-w-[270px]" />
               </Link>
               <p className="mt-5 text-sm leading-relaxed text-ivory/65">
                 Premium custom furniture, upholstery, and interior solutions crafted
