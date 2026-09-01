@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL, BUSINESS_ADDRESS } from "@/lib/constants";
 
+export const OG_IMAGE_PATH = "/og-image.png";
+export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
+
 type PageMeta = {
   title: string;
   description: string;
   path?: string;
   noIndex?: boolean;
+  image?: string;
 };
 
 export function createMetadata({
@@ -13,8 +17,10 @@ export function createMetadata({
   description,
   path = "",
   noIndex = false,
+  image = OG_IMAGE_PATH,
 }: PageMeta): Metadata {
   const url = `${SITE_URL}${path}`;
+  const imageUrl = image.startsWith("http") ? image : `${SITE_URL}${image}`;
 
   return {
     title,
@@ -28,11 +34,20 @@ export function createMetadata({
       siteName: SITE_NAME,
       locale: "en_AE",
       type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME} — Premium Custom Furniture & Interiors UAE`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [imageUrl],
     },
   };
 }
@@ -43,8 +58,8 @@ export function organizationSchema() {
     "@type": "LocalBusiness",
     name: "Al-Awan Furniture",
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.png`,
-    image: `${SITE_URL}/favicon.png`,
+    logo: `${SITE_URL}/logo-header.png`,
+    image: OG_IMAGE_URL,
     telephone: "+971564594043",
     email: "alawanfurniture0@gmail.com",
     areaServed: {
