@@ -62,6 +62,7 @@ export default function HomePage() {
                   <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
                     <CallImageLink
                       location="home_service_card"
+                      whatsappMessage={`Hello Al-Awan Furniture, I am interested in ${service.name}.`}
                       className={`image-flash image-glow relative overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
                     >
                       <Image
@@ -135,6 +136,7 @@ export default function HomePage() {
                 <article className="premium-card group image-glow overflow-hidden">
                   <CallImageLink
                     location="home_project_card"
+                    whatsappMessage={`Hello Al-Awan Furniture, I am interested in your ${project.title} project.`}
                     className="image-flash relative block aspect-[4/5] overflow-hidden"
                   >
                     <Image

@@ -347,6 +347,40 @@
     animation-duration: 1.8s;
   }
 
+  .image-contact-icon {
+    @apply pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-300 sm:h-11 sm:w-11;
+    opacity: 0.95;
+    transform: translateY(0) scale(1);
+  }
+
+  .group\/call:hover .image-contact-icon,
+  .group\/call:focus-within .image-contact-icon {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+
+  .image-contact-icon--call {
+    background: linear-gradient(135deg, #c9a06c 0%, #a0784a 100%);
+    box-shadow: 0 4px 14px rgba(160, 120, 74, 0.45);
+  }
+
+  .image-contact-icon--call:hover {
+    background: linear-gradient(135deg, #d4ad7a 0%, #b08855 100%);
+    box-shadow: 0 6px 18px rgba(160, 120, 74, 0.55);
+    transform: scale(1.1);
+  }
+
+  .image-contact-icon--whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #1aad52 100%);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  }
+
+  .image-contact-icon--whatsapp:hover {
+    background: linear-gradient(135deg, #2ee676 0%, #1fb855 100%);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+    transform: scale(1.1);
+  }
+
   @keyframes image-flash-sweep {
     0% { transform: translateX(-120%); }
     45%, 100% { transform: translateX(120%); }

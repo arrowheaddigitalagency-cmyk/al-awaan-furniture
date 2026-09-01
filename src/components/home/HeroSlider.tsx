@@ -98,7 +98,7 @@ export function HeroSlider() {
       <div className="pointer-events-none absolute left-4 top-1/2 hidden h-32 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-bronze/60 to-transparent md:block lg:left-12" />
       <div className="pointer-events-none absolute right-4 top-1/2 hidden h-32 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-bronze/60 to-transparent md:block lg:right-12" />
 
-      <div className="container-wide relative z-10 flex min-h-[100svh] flex-col justify-center pb-28 pt-[5.5rem] md:pb-32 md:pt-24">
+      <div className="container-wide relative z-10 flex min-h-[100svh] flex-col justify-center pb-24 pt-[5.5rem] max-md:pb-32 md:pb-32 md:pt-24">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-8">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-bronze/50 bg-charcoal/40 px-4 py-2 backdrop-blur-md">
@@ -137,14 +137,14 @@ export function HeroSlider() {
               </Link>
             </div>
 
-            <div className="mt-5 flex flex-row gap-2 sm:gap-3">
+            <div className="mt-6 hidden items-center gap-3 md:flex">
               <a
                 href={PHONE_TEL}
                 onClick={() => trackEvent("click_to_call", { location: "hero" })}
-                className="hero-text-shadow-sm inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-bronze/50 bg-gradient-to-r from-bronze to-bronze-dark px-4 py-3.5 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-bronze/25 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:flex-initial sm:px-6 sm:text-sm"
+                className="image-contact-icon image-contact-icon--call h-12 w-12"
+                aria-label="Call Al-Awan Furniture"
               >
-                <Phone className="h-4 w-4" />
-                Call Now
+                <Phone className="h-5 w-5" strokeWidth={2.25} />
               </a>
               <a
                 href={buildWhatsAppLink(
@@ -152,11 +152,11 @@ export function HeroSlider() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-text-shadow-sm inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-3.5 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-[#25D366]/30 transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-lg sm:flex-initial sm:px-6 sm:text-sm"
                 onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
+                className="image-contact-icon image-contact-icon--whatsapp h-12 w-12"
+                aria-label="WhatsApp Al-Awan Furniture"
               >
-                <WhatsAppIcon size={18} />
-                WhatsApp
+                <WhatsAppIcon size={20} />
               </a>
             </div>
 
@@ -204,7 +204,7 @@ export function HeroSlider() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-0 right-0 z-10 px-4 md:px-8 lg:bottom-10">
+        <div className="relative mt-10 max-md:mt-6 md:absolute md:bottom-8 md:left-0 md:right-0 md:mt-0 md:px-8 lg:bottom-10">
           <div className="flex items-center justify-between">
             <div className="hidden items-center gap-3 font-mono text-xs text-ivory/50 md:flex">
               <span className="text-lg font-display text-bronze-light">0{current + 1}</span>
