@@ -1,6 +1,16 @@
 export const SITE_NAME = "Al-Awan Furniture";
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://al-awanfurniture.com";
+
+function resolveSiteUrl(): string {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configured) return configured.replace(/\/$/, "");
+
+  const vercelUrl = process.env.VERCEL_URL?.trim();
+  if (vercelUrl) return `https://${vercelUrl.replace(/\/$/, "")}`;
+
+  return "https://al-awanfurniture.com";
+}
+
+export const SITE_URL = resolveSiteUrl();
 export const PHONE_DISPLAY = "+971 56 459 4043";
 export const PHONE_TEL = "tel:+971564594043";
 export const WHATSAPP_NUMBER = "971564594043";
