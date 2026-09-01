@@ -137,11 +137,11 @@ export function HeroSlider() {
               </Link>
             </div>
 
-            <div className="mt-6 hidden items-center gap-3 md:flex">
+            <div className="mt-5 flex items-center gap-3">
               <a
                 href={PHONE_TEL}
                 onClick={() => trackEvent("click_to_call", { location: "hero" })}
-                className="image-contact-icon image-contact-icon--call h-12 w-12"
+                className="image-contact-icon image-contact-icon--call h-11 w-11 sm:h-12 sm:w-12"
                 aria-label="Call Al-Awan Furniture"
               >
                 <Phone className="h-5 w-5" strokeWidth={2.25} />
@@ -153,7 +153,7 @@ export function HeroSlider() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
-                className="image-contact-icon image-contact-icon--whatsapp h-12 w-12"
+                className="image-contact-icon image-contact-icon--whatsapp h-11 w-11 sm:h-12 sm:w-12"
                 aria-label="WhatsApp Al-Awan Furniture"
               >
                 <WhatsAppIcon size={20} />
