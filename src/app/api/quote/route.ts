@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { CONTACT_EMAIL } from "@/lib/constants";
+import { getWeb3FormsAccessKey } from "@/lib/web3forms";
 
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
@@ -7,16 +8,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const accessKey =
-      process.env.WEB3FORMS_ACCESS_KEY ??
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-
-    if (!accessKey) {
-      return NextResponse.json(
-        { success: false, message: "Form is not configured." },
-        { status: 500 }
-      );
-    }
+    const accessKey = getWeb3FormsAccessKey();
 
     const { name, phone, email, service, location, details, contactMethod, botcheck } =
       body;

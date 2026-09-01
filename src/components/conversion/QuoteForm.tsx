@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { services } from "@/data/services";
-import { CONTACT_EMAIL } from "@/lib/constants";
 import { getStoredAttribution } from "@/lib/attribution";
 import { trackEvent } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
@@ -87,54 +86,22 @@ export function QuoteForm({
       .join("\n");
 
     try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-
-      if (!accessKey) {
-        throw new Error("Form is not configured. Please contact us by phone or WhatsApp.");
-      }
-
-      const payload: Record<string, string> = {
-        access_key: accessKey,
-        subject: `Quote Request — ${form.service} — Al-Awan Furniture`,
-        from_name: "Al-Awan Furniture Website",
-        name: form.name.trim(),
-        phone: form.phone.trim(),
-        email: form.email.trim() || CONTACT_EMAIL,
-        message: [
-          `Name: ${form.name.trim()}`,
-          `Service: ${form.service}`,
-          `Phone: ${form.phone.trim()}`,
-          `Email: ${form.email.trim() || "Not provided"}`,
-          `Location: ${form.location.trim() || "Not specified"}`,
-          `Preferred Contact: ${form.contactMethod}`,
-          "",
-          "Project Details:",
-          form.details.trim(),
-          "",
-          attributionStr ? `Attribution:\n${attributionStr}` : "",
-        ]
-          .filter(Boolean)
-          .join("\n"),
-        botcheck: "",
-      };
-
-      if (form.email.trim()) {
-        payload.replyto = form.email.trim();
-      }
-
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...form,
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          location: form.location.trim(),
+          details: form.details.trim(),
+          attribution: attributionStr,
+          botcheck: "",
+        }),
       });
 
-      const raw = await response.text();
-      let data: { success?: boolean; message?: string };
-      try {
-        data = JSON.parse(raw) as { success?: boolean; message?: string };
-      } catch {
-        throw new Error("Could not submit the form. Please try again or contact us directly.");
-      }
+      const data = (await response.json()) as { success?: boolean; message?: string };
 
       if (!response.ok || !data.success) {
         throw new Error(data.message || "Submission failed");
