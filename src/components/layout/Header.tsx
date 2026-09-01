@@ -61,9 +61,9 @@ function MobileMenu({
               <Image
                 src="/logo-footer.png"
                 alt="Al-Awan Furniture"
-                width={200}
-                height={58}
-                className="h-9 w-auto max-w-[190px] object-contain"
+                width={260}
+                height={64}
+                className="h-9 w-auto max-w-[220px] object-contain sm:max-w-[240px]"
               />
               <button
                 type="button"
@@ -206,17 +206,14 @@ export function Header() {
           <div className="flex h-[4.25rem] items-center justify-between gap-4 lg:h-[4.75rem]">
             <Link href="/" className="relative z-50 shrink-0" aria-label="Al-Awan Furniture Home">
               <span
-                className={cn(
-                  "inline-flex rounded-lg px-2.5 py-1.5 transition-all duration-300",
-                  isOverlay ? "bg-white/95 shadow-md shadow-black/10" : "bg-transparent"
-                )}
+                className="inline-flex rounded-lg border border-bronze/25 bg-white px-2.5 py-1.5 shadow-sm shadow-black/5"
               >
                 <Image
                   src="/logo-footer.png"
                   alt="Al-Awan Furniture"
-                  width={220}
-                  height={64}
-                  className="h-9 w-auto max-w-[200px] object-contain sm:h-10 lg:h-11"
+                  width={280}
+                  height={72}
+                  className="h-10 w-auto max-w-[230px] object-contain sm:max-w-[250px] lg:max-w-[270px] lg:h-11"
                   priority
                 />
               </span>

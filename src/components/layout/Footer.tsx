@@ -34,9 +34,9 @@ export function Footer() {
                   <Image
                     src="/logo-footer.png"
                     alt={SITE_NAME}
-                    width={240}
-                    height={72}
-                    className="h-12 w-auto max-w-[220px] object-contain sm:h-14"
+                    width={280}
+                    height={80}
+                    className="h-12 w-auto max-w-[240px] object-contain sm:h-14 sm:max-w-[270px]"
                   />
                 </span>
               </Link>
