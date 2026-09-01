@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CallImageLink } from "@/components/conversion/CallImageLink";
 
 export const showcaseImages = [
   {
@@ -99,9 +98,8 @@ export function HomeShowcaseGallery() {
               key={image.src}
               className="mb-3 break-inside-avoid overflow-hidden rounded-lg border border-bronze/25 bg-charcoal-soft lg:mb-4"
             >
-              <CallImageLink
-                location="showcase_gallery"
-                className={`image-flash image-glow group relative block overflow-hidden ${
+              <div
+                className={`image-flash group relative block overflow-hidden ${
                   i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-[4/5]" : "aspect-square"
                 }`}
               >
@@ -110,7 +108,7 @@ export function HomeShowcaseGallery() {
                   alt={image.alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover/call:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/25 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 z-10 p-3 md:p-4">
@@ -121,7 +119,7 @@ export function HomeShowcaseGallery() {
                     {image.alt}
                   </p>
                 </div>
-              </CallImageLink>
+              </div>
             </article>
           ))}
         </div>

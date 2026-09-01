@@ -3,7 +3,6 @@ import { FadeIn, SectionHeading } from "@/components/ui/FadeIn";
 import { PageHero } from "@/components/layout/PageHero";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
-import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { WHY_CHOOSE } from "@/lib/constants";
 import { pageBanners } from "@/lib/banners";
 import { createMetadata } from "@/lib/seo";
@@ -42,10 +41,7 @@ export default function AboutPage() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <CallImageLink
-              location="about_page"
-              className="image-flash image-glow relative block aspect-[4/3] overflow-hidden rounded-lg"
-            >
+            <div className="image-flash image-glow relative aspect-[4/3] overflow-hidden rounded-lg">
               <Image
                 src="/images/services/cupboards/IMG-20251223-WA0101.jpg"
                 alt="Custom wardrobe craftsmanship"
@@ -53,7 +49,7 @@ export default function AboutPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-            </CallImageLink>
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -61,10 +57,7 @@ export default function AboutPage() {
       <section className="section-padding-sm bg-cream/40">
         <div className="container-wide grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <FadeIn>
-            <CallImageLink
-              location="about_page_craft"
-              className="image-flash image-glow relative block aspect-[4/3] overflow-hidden rounded-lg"
-            >
+            <div className="image-flash image-glow relative aspect-[4/3] overflow-hidden rounded-lg">
               <Image
                 src="/images/services/wall-paneling/IMG-20251223-WA0061.jpg"
                 alt="Wall paneling and bedroom design"
@@ -72,7 +65,7 @@ export default function AboutPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-            </CallImageLink>
+            </div>
           </FadeIn>
           <FadeIn delay={0.1}>
             <SectionHeading

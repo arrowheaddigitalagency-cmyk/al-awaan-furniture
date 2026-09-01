@@ -5,7 +5,6 @@ import { Phone } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
@@ -51,8 +50,8 @@ export function ServiceHero({ service }: ServiceHeroProps) {
         </nav>
       </div>
 
-      <div className="container-wide relative grid min-h-[58vh] items-center gap-10 py-20 pt-16 lg:grid-cols-2 lg:gap-16 lg:py-24 lg:pt-20">
-        <FadeIn>
+      <div className="container-wide relative flex min-h-[58vh] items-center py-20 pt-16 lg:py-24 lg:pt-20">
+        <FadeIn className="max-w-3xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-bronze/30 bg-bronze/10 px-4 py-1.5 backdrop-blur-sm">
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-bronze-light">
               {service.shortName}
@@ -97,27 +96,6 @@ export function ServiceHero({ service }: ServiceHeroProps) {
             <Phone className="h-4 w-4 text-bronze-light" />
             Call {PHONE_DISPLAY}
           </a>
-        </FadeIn>
-
-        <FadeIn delay={0.15} className="hidden lg:block">
-          <div className="relative">
-            <CallImageLink
-              location={`service_hero_${service.slug}`}
-              className="relative block aspect-[4/5] overflow-hidden rounded-lg shadow-2xl"
-            >
-              <Image
-                src={service.heroImage}
-                alt={`${service.name} example`}
-                fill
-                sizes="50vw"
-                className="object-cover transition-transform duration-500 group-hover/call:scale-[1.02]"
-                priority
-              />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/15" />
-            </CallImageLink>
-            <div className="absolute -bottom-4 -left-4 h-24 w-24 border-l-2 border-b-2 border-bronze/40" />
-            <div className="absolute -right-4 -top-4 h-24 w-24 border-r-2 border-t-2 border-bronze/40" />
-          </div>
         </FadeIn>
       </div>
     </section>

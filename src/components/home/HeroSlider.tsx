@@ -101,8 +101,8 @@ export function HeroSlider() {
       <div className="relative z-10 flex min-h-[100svh] flex-col px-4 pb-4 pt-[4.5rem] md:px-0 md:pb-0 md:pt-0">
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden border border-ivory/15 md:border-0 md:overflow-visible">
           <div className="container-wide relative flex min-h-0 flex-1 flex-col justify-center px-3 pb-3 pt-6 max-md:overflow-hidden md:min-h-[100svh] md:px-4 md:pb-32 md:pt-24">
-            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
-              <div className="flex min-h-0 flex-col lg:col-span-8">
+            <div className="grid items-center gap-10">
+              <div className="flex min-h-0 flex-col">
                 <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-bronze/50 bg-charcoal/40 px-4 py-2 backdrop-blur-md">
                   <Sparkles className="h-3.5 w-3.5 text-bronze-light" />
                   <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-bronze-light">
@@ -164,46 +164,6 @@ export function HeroSlider() {
 
                 <div className="mt-6 max-md:mt-auto max-md:overflow-hidden md:mt-8">
                   <HeroTrustCarousel />
-                </div>
-              </div>
-
-              <div className="hidden lg:col-span-4 lg:block">
-                <div className="space-y-3">
-                  {slides.map((s, i) => (
-                    <button
-                      key={s.image}
-                      type="button"
-                      onClick={() => setCurrent(i)}
-                      className={`group relative flex w-full items-center gap-4 overflow-hidden rounded-lg border p-2 text-left transition-all duration-500 ${
-                        i === current
-                          ? "border-bronze/60 bg-ivory/15 shadow-lg shadow-bronze/10"
-                          : "border-ivory/15 bg-ivory/10 hover:border-ivory/30"
-                      }`}
-                      aria-label={`View slide ${i + 1}: ${s.eyebrow}`}
-                      aria-current={i === current}
-                    >
-                      <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm">
-                        <Image
-                          src={s.image}
-                          alt=""
-                          fill
-                          sizes="96px"
-                          className="object-cover brightness-110 saturate-110"
-                        />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-bronze-light">
-                          0{i + 1}
-                        </p>
-                        <p className="text-sm font-medium text-ivory/90">{s.eyebrow}</p>
-                      </div>
-                      <div
-                        className={`absolute bottom-0 left-0 h-0.5 bg-bronze transition-all duration-500 ${
-                          i === current ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </button>
-                  ))}
                 </div>
               </div>
             </div>

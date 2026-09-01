@@ -11,7 +11,6 @@ import { ServiceHero } from "@/components/service/ServiceHero";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
 import { QuoteForm } from "@/components/conversion/QuoteForm";
-import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { WHY_CHOOSE } from "@/lib/constants";
 import { getRelatedProjects } from "@/data/projects";
 import { trackEvent } from "@/lib/tracking";
@@ -34,7 +33,7 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
       <TrustStrip />
 
       <section className="section-padding-sm">
-        <div className="container-wide grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="container-wide max-w-3xl">
           <FadeIn>
             <SectionHeading
               eyebrow="Overview"
@@ -55,18 +54,6 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
               ))}
             </ul>
           </FadeIn>
-          <FadeIn delay={0.1}>
-            <div id="quote-form" className="premium-card p-6 md:p-8">
-              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-bronze">
-                Free Quotation
-              </p>
-              <h2 className="font-display text-2xl text-charcoal">Request a Quote</h2>
-              <p className="mb-6 mt-2 text-sm text-warm-gray">
-                Tell us about your project and we will get back to you shortly.
-              </p>
-              <QuoteForm defaultService={service.name} compact />
-            </div>
-          </FadeIn>
         </div>
       </section>
 
@@ -85,7 +72,24 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
               className="mx-auto mb-8"
             />
           </FadeIn>
-          <ImageGallery images={service.gallery} alt={service.name} location={`service_gallery_${service.slug}`} />
+          <ImageGallery images={service.gallery} alt={service.name} />
+        </div>
+      </section>
+
+      <section className="section-padding-sm">
+        <div className="container-wide">
+          <FadeIn>
+            <div id="quote-form" className="premium-card mx-auto max-w-xl p-6 md:p-8">
+              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-bronze">
+                Free Quotation
+              </p>
+              <h2 className="font-display text-2xl text-charcoal">Request a Quote</h2>
+              <p className="mb-6 mt-2 text-sm text-warm-gray">
+                Tell us about your project and we will get back to you shortly.
+              </p>
+              <QuoteForm defaultService={service.name} compact />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -162,18 +166,15 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
               {relatedProjects.map((project, i) => (
                 <FadeIn key={project.id} delay={i * 0.08}>
                   <article className="premium-card group overflow-hidden">
-                    <CallImageLink
-                      location={`related_project_${service.slug}`}
-                      className="relative block aspect-[4/3] overflow-hidden"
-                    >
+                    <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={project.images[0]}
                         alt={project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                    </CallImageLink>
+                    </div>
                     <div className="p-5">
                       <p className="text-xs uppercase tracking-wider text-bronze">
                         {project.category}
