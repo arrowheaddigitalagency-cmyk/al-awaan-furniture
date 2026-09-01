@@ -6,16 +6,10 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
+import { PHONE_TEL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
-
-const heroTrust = [
-  "Custom Made",
-  "UAE Wide Service",
-  "Free Quotation",
-  "Expert Installation",
-];
+import { HeroTrustCarousel } from "@/components/home/HeroTrustCarousel";
 
 const slides = [
   {
@@ -44,6 +38,15 @@ const slides = [
     highlight: "Fit Perfectly",
     description:
       "Smart storage solutions with premium finishes — from walk-in closets to fitted wardrobes.",
+  },
+  {
+    image: "/images/services/kids-rooms/IMG-20251223-WA0041-1024x809.jpg",
+    alt: "Kids room custom furniture design",
+    eyebrow: "Kids & Family Rooms",
+    title: "Spaces for",
+    highlight: "Every Generation",
+    description:
+      "Playful, practical kids rooms and family spaces designed with smart storage and durable finishes.",
   },
 ];
 
@@ -180,24 +183,7 @@ export function HeroSlider() {
                   </a>
                 </div>
 
-                <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {heroTrust.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-lg border border-bronze/25 bg-charcoal/35 px-3 py-2.5 text-center backdrop-blur-sm"
-                    >
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-bronze-light sm:text-[11px]">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-bronze/20 pt-6 text-sm text-ivory/80">
-                  <span className="hero-text-shadow-sm font-semibold">{PHONE_DISPLAY}</span>
-                  <span className="text-ivory/40">|</span>
-                  <span>Sharjah, UAE</span>
-                </div>
+                <HeroTrustCarousel />
               </motion.div>
             </AnimatePresence>
           </div>

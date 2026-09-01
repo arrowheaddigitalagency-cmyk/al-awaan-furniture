@@ -12,6 +12,7 @@ import {
   StaggerItem,
 } from "@/components/ui/FadeIn";
 import { HeroSlider } from "@/components/home/HeroSlider";
+import { HomeShowcaseGallery } from "@/components/home/HomeShowcaseGallery";
 import { TrustStrip } from "@/components/service/TrustStrip";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
@@ -28,7 +29,7 @@ const featuredServices = [
 ];
 
 export default function HomePage() {
-  const projects = getFeaturedProjects().slice(0, 6);
+  const projects = getFeaturedProjects().slice(0, 9);
 
   return (
     <>
@@ -219,6 +220,7 @@ export default function HomePage() {
       </SectionReveal>
 
       <ProcessSection />
+      <HomeShowcaseGallery />
       <CTASection />
     </>
   );
