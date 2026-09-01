@@ -32,11 +32,11 @@ export function Footer() {
               <Link href="/" className="inline-block">
                 <span className="inline-flex rounded-lg border border-bronze/30 bg-white px-3 py-2 shadow-md shadow-bronze/10">
                   <Image
-                    src="/logo-header.png"
+                    src="/logo-footer.png"
                     alt={SITE_NAME}
-                    width={220}
-                    height={70}
-                    className="h-12 w-auto max-w-[200px] object-contain sm:h-14"
+                    width={240}
+                    height={72}
+                    className="h-12 w-auto max-w-[220px] object-contain sm:h-14"
                   />
                 </span>
               </Link>

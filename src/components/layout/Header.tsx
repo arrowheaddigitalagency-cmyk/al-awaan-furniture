@@ -59,11 +59,11 @@ function MobileMenu({
           >
             <div className="flex items-center justify-between border-b border-border px-6 py-5">
               <Image
-                src="/logo-header.png"
+                src="/logo-footer.png"
                 alt="Al-Awan Furniture"
-                width={160}
-                height={48}
-                className="h-9 w-auto object-contain"
+                width={200}
+                height={58}
+                className="h-9 w-auto max-w-[190px] object-contain"
               />
               <button
                 type="button"
@@ -212,11 +212,11 @@ export function Header() {
                 )}
               >
                 <Image
-                  src="/logo-header.png"
+                  src="/logo-footer.png"
                   alt="Al-Awan Furniture"
-                  width={200}
-                  height={56}
-                  className="h-8 w-auto object-contain transition-transform duration-300 hover:scale-[1.02] sm:h-9 lg:h-10"
+                  width={220}
+                  height={64}
+                  className="h-9 w-auto max-w-[200px] object-contain sm:h-10 lg:h-11"
                   priority
                 />
               </span>

@@ -58,7 +58,7 @@ export function organizationSchema() {
     "@type": "LocalBusiness",
     name: "Al-Awan Furniture",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo-header.png`,
+    logo: `${SITE_URL}/logo-footer.png`,
     image: OG_IMAGE_URL,
     telephone: "+971564594043",
     email: "alawanfurniture0@gmail.com",
