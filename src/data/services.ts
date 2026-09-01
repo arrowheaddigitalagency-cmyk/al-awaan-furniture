@@ -58,6 +58,20 @@ const sofaBedImages = [
   "IMG-20251223-WA0073-756x1024.jpg",
 ];
 
+const upholsteryGalleryImages = [
+  ...sofaBedImages,
+  "upholstery-gallery-01.jpeg",
+  "upholstery-gallery-02.jpeg",
+  "upholstery-gallery-03.jpeg",
+  "upholstery-gallery-04.jpeg",
+  "upholstery-gallery-05.jpeg",
+  "upholstery-gallery-06.jpeg",
+  "upholstery-gallery-07.jpeg",
+  "upholstery-gallery-08.jpeg",
+  "upholstery-gallery-09.jpeg",
+  "upholstery-gallery-10.jpeg",
+];
+
 const dressingImages = [
   "IMG-20251223-WA0051.jpg",
   "IMG-20251223-WA0052-1.jpg",
@@ -106,7 +120,7 @@ export const services: Service[] = [
     intro:
       "Give your existing furniture a new life with professional sofa and bed upholstery. Whether you want to refresh worn fabrics, change colours to match a new interior, or upgrade cushioning for better comfort, our upholstery service is designed around your piece and your home. Ideal for homeowners across the UAE who want quality finishing without replacing perfectly good furniture frames.",
     heroImage: gallery("upholstery", ["IMG-20251223-WA0068-826x1024.jpg"])[0],
-    gallery: gallery("upholstery", sofaBedImages),
+    gallery: gallery("upholstery", upholsteryGalleryImages),
     benefits: [
       "Refresh existing sofas and beds without full replacement",
       "Wide fabric and colour options",
