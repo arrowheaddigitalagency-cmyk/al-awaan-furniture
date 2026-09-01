@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { CardContactActions } from "@/components/conversion/CardContactActions";
 
 export const showcaseImages = [
   {
@@ -92,11 +95,15 @@ export function HomeShowcaseGallery() {
 
         <div className="columns-2 gap-3 md:columns-3 lg:columns-4 lg:gap-4">
           {showcaseImages.map((image, i) => (
-            <div
+            <article
               key={image.src}
               className="group mb-3 break-inside-avoid overflow-hidden rounded-lg border border-bronze/25 bg-charcoal-soft lg:mb-4"
             >
-              <div className={`relative overflow-hidden ${i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-[4/5]" : "aspect-square"}`}>
+              <div
+                className={`image-flash image-glow relative overflow-hidden ${
+                  i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-[4/5]" : "aspect-square"
+                }`}
+              >
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -104,17 +111,22 @@ export function HomeShowcaseGallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/25 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-3 md:p-4">
                   <p className="text-[9px] font-bold uppercase tracking-wider text-bronze-light md:text-[10px]">
                     {image.category}
                   </p>
                   <p className="mt-1 text-xs font-medium text-ivory/90 line-clamp-2 md:text-sm">
                     {image.alt}
                   </p>
+                  <CardContactActions
+                    location="showcase_gallery"
+                    message={`Hello Al-Awan Furniture, I am interested in your ${image.category} work.`}
+                    className="mt-3"
+                  />
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

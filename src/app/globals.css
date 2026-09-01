@@ -321,6 +321,49 @@
   .image-glow:hover {
     box-shadow: 0 0 0 1px rgba(201, 160, 108, 0.45), 0 14px 36px rgba(160, 120, 74, 0.12);
   }
+
+  .image-flash {
+    @apply relative isolate overflow-hidden;
+  }
+
+  .image-flash::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.08) 42%,
+      rgba(201, 160, 108, 0.22) 50%,
+      rgba(255, 255, 255, 0.08) 58%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    animation: image-flash-sweep 3.5s ease-in-out infinite;
+  }
+
+  .image-flash:hover::after {
+    animation-duration: 1.8s;
+  }
+
+  @keyframes image-flash-sweep {
+    0% { transform: translateX(-120%); }
+    45%, 100% { transform: translateX(120%); }
+  }
+
+  .trust-marquee {
+    animation: trust-marquee 22s linear infinite;
+  }
+
+  .trust-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes trust-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

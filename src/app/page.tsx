@@ -16,6 +16,7 @@ import { HomeShowcaseGallery } from "@/components/home/HomeShowcaseGallery";
 import { TrustStrip } from "@/components/service/TrustStrip";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
+import { CardContactActions } from "@/components/conversion/CardContactActions";
 import { services } from "@/data/services";
 import { getFeaturedProjects } from "@/data/projects";
 
@@ -58,12 +59,9 @@ export default function HomePage() {
                   variant="scale"
                   className={isLarge ? "md:col-span-7" : "md:col-span-5"}
                 >
-                  <Link
-                    href={`/services/${slug}`}
-                    className="group relative block overflow-hidden rounded-lg"
-                  >
+                  <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
                     <div
-                      className={`relative image-glow overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
+                      className={`image-flash image-glow relative overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
                     >
                       <Image
                         src={service.heroImage}
@@ -72,7 +70,7 @@ export default function HomePage() {
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10 transition-opacity duration-500 group-hover:from-charcoal/95" />
+                      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10" />
                       <div className="absolute inset-0 z-[1] ring-1 ring-inset ring-white/10" />
 
                       <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8">
@@ -80,18 +78,28 @@ export default function HomePage() {
                           {service.shortName}
                         </span>
                         <h3 className="mt-3 font-display text-2xl text-ivory md:text-3xl lg:text-4xl">
-                          {service.name}
+                          <Link href={`/services/${slug}`} className="hover:text-bronze-light">
+                            {service.name}
+                          </Link>
                         </h3>
-                        <p className="mt-2 max-w-md text-sm text-ivory/60 line-clamp-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                        <p className="mt-2 max-w-md text-sm text-ivory/70 line-clamp-2">
                           {service.description}
                         </p>
-                        <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-bronze-light transition-all group-hover:gap-3">
+                        <CardContactActions
+                          location="home_service_card"
+                          message={`Hello Al-Awan Furniture, I am interested in ${service.name}.`}
+                          className="mt-4"
+                        />
+                        <Link
+                          href={`/services/${slug}`}
+                          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-bronze-light transition-all hover:gap-3"
+                        >
                           Explore Service
                           <ArrowRight className="h-4 w-4" />
-                        </span>
+                        </Link>
                       </div>
                     </div>
-                  </Link>
+                  </article>
                 </StaggerItem>
               );
             })}
@@ -125,8 +133,8 @@ export default function HomePage() {
           <StaggerChildren className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
             {projects.map((project) => (
               <StaggerItem key={project.id} variant="fade-up">
-                <article className="premium-card group image-glow">
-                  <div className="relative aspect-[4/5] overflow-hidden">
+                <article className="premium-card group image-glow overflow-hidden">
+                  <div className="image-flash relative aspect-[4/5] overflow-hidden">
                     <Image
                       src={project.images[0]}
                       alt={project.title}
@@ -134,14 +142,19 @@ export default function HomePage() {
                       sizes="(max-width: 640px) 100vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 z-10 p-6 translate-y-2 transition-transform duration-500 group-hover:translate-y-0">
+                    <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
                       <p className="text-[10px] font-semibold uppercase tracking-wider text-bronze-light">
                         {project.category}
                       </p>
                       <h3 className="mt-1 font-display text-xl text-ivory md:text-2xl">
                         {project.title}
                       </h3>
+                      <CardContactActions
+                        location="home_project_card"
+                        message={`Hello Al-Awan Furniture, I like your ${project.title} project.`}
+                        className="mt-4"
+                      />
                     </div>
                   </div>
                 </article>
@@ -161,7 +174,7 @@ export default function HomePage() {
         <div className="container-wide">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <FadeIn variant="fade-right" className="relative">
-              <div className="image-glow relative aspect-[4/5] overflow-hidden rounded-lg">
+              <div className="image-flash image-glow relative aspect-[4/5] overflow-hidden rounded-lg">
                 <Image
                   src="/images/hero/hero-bedroom.jpg"
                   alt="Custom bedroom furniture by Al-Awan Furniture"
@@ -175,7 +188,7 @@ export default function HomePage() {
                 delay={0.3}
                 className="absolute -bottom-6 -right-4 hidden md:block lg:-right-8"
               >
-                <div className="image-glow relative aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56">
+                <div className="image-flash image-glow relative aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56">
                   <Image
                     src="/images/hero/hero-wardrobe.jpg"
                     alt="Custom wardrobe detail"
