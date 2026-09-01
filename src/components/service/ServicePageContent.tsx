@@ -11,6 +11,7 @@ import { ServiceHero } from "@/components/service/ServiceHero";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
 import { QuoteForm } from "@/components/conversion/QuoteForm";
+import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { WHY_CHOOSE } from "@/lib/constants";
 import { getRelatedProjects } from "@/data/projects";
 import { trackEvent } from "@/lib/tracking";
@@ -84,7 +85,7 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
               className="mx-auto mb-8"
             />
           </FadeIn>
-          <ImageGallery images={service.gallery} alt={service.name} />
+          <ImageGallery images={service.gallery} alt={service.name} location={`service_gallery_${service.slug}`} />
         </div>
       </section>
 
@@ -160,16 +161,19 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
             <div className="grid gap-6 md:grid-cols-3">
               {relatedProjects.map((project, i) => (
                 <FadeIn key={project.id} delay={i * 0.08}>
-                  <article className="premium-card group">
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                  <article className="premium-card group overflow-hidden">
+                    <CallImageLink
+                      location={`related_project_${service.slug}`}
+                      className="relative block aspect-[4/3] overflow-hidden"
+                    >
                       <Image
                         src={project.images[0]}
                         alt={project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
                       />
-                    </div>
+                    </CallImageLink>
                     <div className="p-5">
                       <p className="text-xs uppercase tracking-wider text-bronze">
                         {project.category}

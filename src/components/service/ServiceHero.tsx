@@ -5,6 +5,7 @@ import { Phone } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
@@ -100,17 +101,20 @@ export function ServiceHero({ service }: ServiceHeroProps) {
 
         <FadeIn delay={0.15} className="hidden lg:block">
           <div className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-2xl">
+            <CallImageLink
+              location={`service_hero_${service.slug}`}
+              className="relative block aspect-[4/5] overflow-hidden rounded-lg shadow-2xl"
+            >
               <Image
                 src={service.heroImage}
                 alt={`${service.name} example`}
                 fill
                 sizes="50vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover/call:scale-[1.02]"
                 priority
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/15" />
-            </div>
+            </CallImageLink>
             <div className="absolute -bottom-4 -left-4 h-24 w-24 border-l-2 border-b-2 border-bronze/40" />
             <div className="absolute -right-4 -top-4 h-24 w-24 border-r-2 border-t-2 border-bronze/40" />
           </div>

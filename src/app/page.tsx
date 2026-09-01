@@ -16,7 +16,7 @@ import { HomeShowcaseGallery } from "@/components/home/HomeShowcaseGallery";
 import { TrustStrip } from "@/components/service/TrustStrip";
 import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
-import { CardContactActions } from "@/components/conversion/CardContactActions";
+import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { services } from "@/data/services";
 import { getFeaturedProjects } from "@/data/projects";
 
@@ -60,7 +60,8 @@ export default function HomePage() {
                   className={isLarge ? "md:col-span-7" : "md:col-span-5"}
                 >
                   <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
-                    <div
+                    <CallImageLink
+                      location="home_service_card"
                       className={`image-flash image-glow relative overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
                     >
                       <Image
@@ -68,36 +69,34 @@ export default function HomePage() {
                         alt={service.name}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
                       />
                       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10" />
                       <div className="absolute inset-0 z-[1] ring-1 ring-inset ring-white/10" />
+                    </CallImageLink>
 
-                      <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8">
-                        <span className="inline-block rounded-full border border-bronze/30 bg-bronze/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-bronze-light backdrop-blur-sm">
-                          {service.shortName}
-                        </span>
-                        <h3 className="mt-3 font-display text-2xl text-ivory md:text-3xl lg:text-4xl">
-                          <Link href={`/services/${slug}`} className="hover:text-bronze-light">
-                            {service.name}
-                          </Link>
-                        </h3>
-                        <p className="mt-2 max-w-md text-sm text-ivory/70 line-clamp-2">
-                          {service.description}
-                        </p>
-                        <CardContactActions
-                          location="home_service_card"
-                          message={`Hello Al-Awan Furniture, I am interested in ${service.name}.`}
-                          className="mt-4"
-                        />
+                    <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8 pointer-events-none">
+                      <span className="inline-block rounded-full border border-bronze/30 bg-bronze/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-bronze-light backdrop-blur-sm">
+                        {service.shortName}
+                      </span>
+                      <h3 className="mt-3 font-display text-2xl text-ivory md:text-3xl lg:text-4xl">
                         <Link
                           href={`/services/${slug}`}
-                          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-bronze-light transition-all hover:gap-3"
+                          className="pointer-events-auto hover:text-bronze-light"
                         >
-                          Explore Service
-                          <ArrowRight className="h-4 w-4" />
+                          {service.name}
                         </Link>
-                      </div>
+                      </h3>
+                      <p className="mt-2 max-w-md text-sm text-ivory/70 line-clamp-2">
+                        {service.description}
+                      </p>
+                      <Link
+                        href={`/services/${slug}`}
+                        className="pointer-events-auto mt-4 inline-flex items-center gap-2 text-sm font-medium text-bronze-light transition-all hover:gap-3"
+                      >
+                        Explore Service
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
                     </div>
                   </article>
                 </StaggerItem>
@@ -134,13 +133,16 @@ export default function HomePage() {
             {projects.map((project) => (
               <StaggerItem key={project.id} variant="fade-up">
                 <article className="premium-card group image-glow overflow-hidden">
-                  <div className="image-flash relative aspect-[4/5] overflow-hidden">
+                  <CallImageLink
+                    location="home_project_card"
+                    className="image-flash relative block aspect-[4/5] overflow-hidden"
+                  >
                     <Image
                       src={project.images[0]}
                       alt={project.title}
                       fill
                       sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover/call:scale-105"
                     />
                     <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
@@ -150,13 +152,8 @@ export default function HomePage() {
                       <h3 className="mt-1 font-display text-xl text-ivory md:text-2xl">
                         {project.title}
                       </h3>
-                      <CardContactActions
-                        location="home_project_card"
-                        message={`Hello Al-Awan Furniture, I like your ${project.title} project.`}
-                        className="mt-4"
-                      />
                     </div>
-                  </div>
+                  </CallImageLink>
                 </article>
               </StaggerItem>
             ))}
@@ -174,7 +171,10 @@ export default function HomePage() {
         <div className="container-wide">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <FadeIn variant="fade-right" className="relative">
-              <div className="image-flash image-glow relative aspect-[4/5] overflow-hidden rounded-lg">
+              <CallImageLink
+                location="home_about_image"
+                className="image-flash image-glow relative block aspect-[4/5] overflow-hidden rounded-lg"
+              >
                 <Image
                   src="/images/hero/hero-bedroom.jpg"
                   alt="Custom bedroom furniture by Al-Awan Furniture"
@@ -182,13 +182,16 @@ export default function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
-              </div>
+              </CallImageLink>
               <FadeIn
                 variant="scale"
                 delay={0.3}
                 className="absolute -bottom-6 -right-4 hidden md:block lg:-right-8"
               >
-                <div className="image-flash image-glow relative aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56">
+                <CallImageLink
+                  location="home_about_image_accent"
+                  className="image-flash image-glow relative block aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56"
+                >
                   <Image
                     src="/images/hero/hero-wardrobe.jpg"
                     alt="Custom wardrobe detail"
@@ -196,7 +199,7 @@ export default function HomePage() {
                     sizes="200px"
                     className="object-cover"
                   />
-                </div>
+                </CallImageLink>
               </FadeIn>
             </FadeIn>
 

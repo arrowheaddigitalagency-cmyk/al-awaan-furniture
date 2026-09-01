@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { FadeIn, SectionHeading } from "@/components/ui/FadeIn";
 import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/conversion/CTASection";
+import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { services, serviceGroups, getServiceBySlug } from "@/data/services";
 import { pageBanners } from "@/lib/banners";
 import { createMetadata } from "@/lib/seo";
@@ -54,15 +55,18 @@ export default function ServicesPage() {
                         reversed ? "md:[&>*:first-child]:order-2" : ""
                       }`}
                     >
-                      <div className="image-glow relative aspect-[4/3] overflow-hidden rounded-lg">
+                      <CallImageLink
+                        location="services_page"
+                        className="image-flash image-glow relative block aspect-[4/3] overflow-hidden rounded-lg"
+                      >
                         <Image
                           src={service.heroImage}
                           alt={service.name}
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+                          className="object-cover transition-transform duration-500 group-hover/call:scale-[1.03]"
                         />
-                      </div>
+                      </CallImageLink>
                       <div>
                         <h2 className="text-3xl text-charcoal md:text-4xl">
                           {service.name}
