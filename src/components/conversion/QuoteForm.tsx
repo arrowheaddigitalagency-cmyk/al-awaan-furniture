@@ -2,10 +2,16 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Phone } from "lucide-react";
 import { services } from "@/data/services";
+import { PHONE_TEL } from "@/lib/constants";
 import { getStoredAttribution } from "@/lib/attribution";
+import { submitQuoteToWeb3Forms } from "@/lib/web3forms";
+import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 interface QuoteFormProps {
   defaultService?: string;
@@ -32,6 +38,10 @@ const initialForm: FormData = {
   details: "",
   contactMethod: "phone",
 };
+
+const fallbackWhatsApp = buildWhatsAppLink(
+  "Hello Al-Awan Furniture, I would like to get a quotation."
+);
 
 export function QuoteForm({
   defaultService = "",
@@ -86,26 +96,18 @@ export function QuoteForm({
       .join("\n");
 
     try {
-      const response = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          name: form.name.trim(),
-          phone: form.phone.trim(),
-          email: form.email.trim(),
-          location: form.location.trim(),
-          details: form.details.trim(),
-          attribution: attributionStr,
-          botcheck: "",
-        }),
+      await submitQuoteToWeb3Forms({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim(),
+        service: form.service,
+        location: form.location.trim(),
+        details: form.details.trim(),
+        contactMethod: form.contactMethod,
+        attribution: attributionStr,
+        botcheck: "",
       });
 
-      const data = (await response.json()) as { success?: boolean; message?: string };
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || "Submission failed");
-      }
       setStatus("success");
       trackEvent("form_submit", { form: "quote", service: form.service });
       trackEvent("generate_lead", { form: "quote", service: form.service });
@@ -122,11 +124,10 @@ export function QuoteForm({
   };
 
   const inputClass =
-    "w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-charcoal placeholder:text-warm-gray/60 focus:border-bronze focus:outline-none";
+    "w-full rounded-lg border border-bronze/25 bg-white px-4 py-3 text-sm text-charcoal shadow-sm placeholder:text-warm-gray/60 focus:border-bronze focus:outline-none focus:ring-2 focus:ring-bronze/15";
 
   return (
     <form id={id} onSubmit={handleSubmit} className="space-y-4" noValidate>
-      {/* Honeypot — hidden from users */}
       <input
         type="text"
         name="botcheck"
@@ -269,9 +270,29 @@ export function QuoteForm({
       </div>
 
       {status === "error" && (
-        <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
-          {errorMessage}
-        </p>
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+          <p>{errorMessage}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <a
+              href={PHONE_TEL}
+              onClick={() => trackEvent("click_to_call", { location: "form_error" })}
+              className="inline-flex items-center gap-2 rounded-lg bg-bronze px-4 py-2 text-xs font-semibold text-white"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              Call Now
+            </a>
+            <a
+              href={fallbackWhatsApp}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { location: "form_error" })}
+              className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-semibold text-white"
+            >
+              <WhatsAppIcon size={14} />
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
       )}
 
       <Button
@@ -283,6 +304,22 @@ export function QuoteForm({
       >
         {status === "loading" ? "Submitting..." : "Request Free Quote"}
       </Button>
+
+      <p className="text-center text-xs text-warm-gray">
+        Prefer instant contact?{" "}
+        <Link href={PHONE_TEL} className="font-semibold text-bronze hover:underline">
+          Call us
+        </Link>{" "}
+        or{" "}
+        <a
+          href={fallbackWhatsApp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-[#1a9e4b] hover:underline"
+        >
+          WhatsApp
+        </a>
+      </p>
     </form>
   );
 }

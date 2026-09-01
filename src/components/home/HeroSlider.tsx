@@ -8,6 +8,14 @@ import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
+import { trackEvent } from "@/lib/tracking";
+
+const heroTrust = [
+  "Custom Made",
+  "UAE Wide Service",
+  "Free Quotation",
+  "Expert Installation",
+];
 
 const slides = [
   {
@@ -149,15 +157,14 @@ export function HeroSlider() {
                   </Button>
                 </div>
 
-                <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-bronze/20 pt-8">
+                <div className="mt-4 flex flex-row gap-2 sm:gap-3">
                   <a
                     href={PHONE_TEL}
-                    className="group flex items-center gap-3 text-ivory transition-colors hover:text-bronze-light"
+                    onClick={() => trackEvent("click_to_call", { location: "hero" })}
+                    className="hero-text-shadow-sm inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-bronze/50 bg-gradient-to-r from-bronze to-bronze-dark px-4 py-3.5 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-bronze/25 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:flex-initial sm:px-6 sm:text-sm"
                   >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-bronze/40 bg-charcoal/50 transition-colors group-hover:border-bronze/70 group-hover:bg-bronze/10">
-                      <Phone className="h-4 w-4 text-bronze-light" />
-                    </span>
-                    <span className="hero-text-shadow-sm text-sm font-semibold">{PHONE_DISPLAY}</span>
+                    <Phone className="h-4 w-4" />
+                    Call Now
                   </a>
                   <a
                     href={buildWhatsAppLink(
@@ -165,11 +172,31 @@ export function HeroSlider() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hero-text-shadow-sm flex items-center gap-2 text-sm font-semibold text-ivory transition-colors hover:text-bronze-light"
+                    className="hero-text-shadow-sm inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-3.5 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-[#25D366]/30 transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-lg sm:flex-initial sm:px-6 sm:text-sm"
+                    onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
                   >
-                    <WhatsAppIcon size={18} className="text-[#25D366]" />
-                    WhatsApp Us
+                    <WhatsAppIcon size={18} />
+                    WhatsApp
                   </a>
+                </div>
+
+                <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {heroTrust.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-lg border border-bronze/25 bg-charcoal/35 px-3 py-2.5 text-center backdrop-blur-sm"
+                    >
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-bronze-light sm:text-[11px]">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-bronze/20 pt-6 text-sm text-ivory/80">
+                  <span className="hero-text-shadow-sm font-semibold">{PHONE_DISPLAY}</span>
+                  <span className="text-ivory/40">|</span>
+                  <span>Sharjah, UAE</span>
                 </div>
               </motion.div>
             </AnimatePresence>

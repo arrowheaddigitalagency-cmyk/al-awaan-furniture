@@ -3,7 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileConversionBar } from "@/components/conversion/MobileConversionBar";
-import { WhatsAppButton } from "@/components/conversion/WhatsAppButton";
+import { FloatingContactActions } from "@/components/conversion/FloatingContactActions";
 import { TrackingProvider } from "@/components/layout/TrackingProvider";
 import { createMetadata, organizationSchema, websiteSchema } from "@/lib/seo";
 import { SITE_URL } from "@/lib/constants";
@@ -93,7 +93,7 @@ export default function RootLayout({
             <Header />
             <main className="mobile-safe-bottom md:pb-0">{children}</main>
             <Footer />
-            <WhatsAppButton variant="floating" className="hidden md:flex" />
+            <FloatingContactActions />
             <MobileConversionBar />
           </div>
         </TrackingProvider>
