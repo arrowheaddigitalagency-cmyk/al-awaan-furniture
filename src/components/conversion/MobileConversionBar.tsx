@@ -1,23 +1,13 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
-import { getServiceBySlug } from "@/data/services";
-
-const defaultMessage =
-  "Hello Al-Awan Furniture, I would like to get a quotation.";
 
 export function MobileConversionBar() {
-  const pathname = usePathname();
-  const serviceSlug = pathname.startsWith("/services/")
-    ? pathname.split("/")[2]
-    : undefined;
-  const service = serviceSlug ? getServiceBySlug(serviceSlug) : undefined;
-  const whatsappMessage = service?.whatsappMessage ?? defaultMessage;
+  const whatsappMessage = DEFAULT_WHATSAPP_MESSAGE;
 
   return (
     <div

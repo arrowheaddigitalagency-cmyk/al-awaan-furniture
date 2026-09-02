@@ -61,7 +61,7 @@ export default function HomePage() {
                 >
                   <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
                     <CallImageLink
-                      callOnly
+                      href={`/services/${slug}`}
                       location="home_service_card"
                       className={`image-flash image-glow relative block overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
                     >
@@ -135,7 +135,6 @@ export default function HomePage() {
               <StaggerItem key={project.id} variant="fade-up">
                 <article className="premium-card group image-glow overflow-hidden">
                   <CallImageLink
-                    callOnly
                     location="home_project_card"
                     className="image-flash relative block aspect-[4/5] overflow-hidden"
                   >
@@ -174,7 +173,6 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <FadeIn variant="fade-right" className="relative">
               <CallImageLink
-                callOnly
                 location="home_about_image"
                 className="image-flash image-glow relative block aspect-[4/5] overflow-hidden rounded-lg"
               >
@@ -192,7 +190,6 @@ export default function HomePage() {
                 className="absolute -bottom-6 -right-4 hidden md:block lg:-right-8"
               >
                 <CallImageLink
-                  callOnly
                   location="home_about_image_accent"
                   className="image-flash image-glow relative block aspect-square w-48 overflow-hidden rounded-lg border-4 border-ivory shadow-2xl lg:w-56"
                 >

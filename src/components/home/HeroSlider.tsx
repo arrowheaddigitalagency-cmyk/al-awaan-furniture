@@ -6,17 +6,17 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Phone, Sparkles } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { PHONE_TEL } from "@/lib/constants";
+import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
 import { HeroTrustCarousel } from "@/components/home/HeroTrustCarousel";
 
 const heroContent = {
   eyebrow: "Premium Custom Furniture UAE",
-  title: "Furniture Made",
-  highlight: "Around Your Space",
+  title: "Made for Your Home.",
+  highlight: "Crafted for Your Memories",
   description:
-    "Custom furniture, upholstery and interior solutions designed and crafted for homes across the UAE.",
+    "Complete custom furniture solutions made to match your space, style, and needs. Enjoy convenient home service with our catalogs, material options, and detailed consultation to bring your ideas to life.",
 };
 
 const slides = [
@@ -149,9 +149,7 @@ export function HeroSlider() {
                     <Phone className="h-5 w-5" strokeWidth={2.25} />
                   </a>
                   <a
-                    href={buildWhatsAppLink(
-                      "Hello Al-Awan Furniture, I would like to get a quotation."
-                    )}
+                href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent("whatsapp_click", { location: "hero" })}

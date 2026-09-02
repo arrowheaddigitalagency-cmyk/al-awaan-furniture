@@ -1,3 +1,4 @@
+import { DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import type { Service, ServiceGroup } from "@/types";
 
 function gallery(folder: string, files: string[]): string[] {
@@ -153,13 +154,12 @@ export const services: Service[] = [
     seoTitle: "Sofa & Bed Upholstery UAE | Al-Awan Furniture",
     seoDescription:
       "Professional sofa and bed upholstery in the UAE. Refresh your furniture with premium fabrics, custom colours, and expert finishing. Request a free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I need sofa/bed upholstery and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Upholstery", "Bedrooms"],
   },
   {
     slug: "custom-sofas-beds",
-    name: "New / Custom Sofas & Beds",
+    name: "Custom Sofas & Beds",
     shortName: "Sofas & Beds",
     category: "living-bedroom",
     headline: "Custom Sofas & Beds Designed for Your Home",
@@ -194,8 +194,7 @@ export const services: Service[] = [
     seoTitle: "Custom Sofas & Beds UAE | Al-Awan Furniture",
     seoDescription:
       "Custom-made sofas and beds for UAE homes. Bespoke designs, premium materials, and professional installation. Get your free quotation today.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in a custom sofa/bed and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Bedrooms", "Sofas"],
   },
   {
@@ -235,8 +234,7 @@ export const services: Service[] = [
     seoTitle: "Custom Wardrobes & Cupboards UAE | Al-Awan Furniture",
     seoDescription:
       "Custom wardrobes and cupboards for UAE homes. Fitted storage designed around your space with premium finishes. Request a free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in custom cupboards/wardrobes and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Wardrobes"],
   },
   {
@@ -276,8 +274,7 @@ export const services: Service[] = [
     seoTitle: "Custom TV Units UAE | Al-Awan Furniture",
     seoDescription:
       "Custom TV units and media walls in the UAE. Bespoke designs with integrated storage and premium finishes. Get a free quotation.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in a custom TV unit. I would like to discuss my requirements and get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["TV Units"],
   },
   {
@@ -317,8 +314,7 @@ export const services: Service[] = [
     seoTitle: "Custom Dressing Tables UAE | Al-Awan Furniture",
     seoDescription:
       "Bespoke dressing tables and vanity units for UAE bedrooms. Custom storage, mirrors, and premium finishes. Request your free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in a custom dressing table and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Bedrooms"],
   },
   {
@@ -361,8 +357,7 @@ export const services: Service[] = [
     seoTitle: "DP Closing Services UAE | Al-Awan Furniture",
     seoDescription:
       "Professional DP closing and interior finishing in the UAE. Seamless transitions and polished details for custom interiors. Get a free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I need DP closing work and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Wall Panels"],
   },
   {
@@ -402,8 +397,7 @@ export const services: Service[] = [
     seoTitle: "Custom Curtains UAE | Al-Awan Furniture",
     seoDescription:
       "Made-to-measure custom curtains in the UAE. Premium fabrics, precise fitting, and elegant window treatments. Request a free quotation.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in custom curtains and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Bedrooms", "Living Rooms"],
   },
   {
@@ -443,8 +437,7 @@ export const services: Service[] = [
     seoTitle: "Kids Room Furniture UAE | Al-Awan Furniture",
     seoDescription:
       "Custom kids room furniture and interiors in the UAE. Beds, storage, study areas, and playful designs. Get your free quotation.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in kids room furniture and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Kids Rooms"],
   },
   {
@@ -484,8 +477,7 @@ export const services: Service[] = [
     seoTitle: "Girls Room Furniture UAE | Al-Awan Furniture",
     seoDescription:
       "Custom girls room furniture and interiors in the UAE. Elegant designs with smart storage and premium finishes. Request a free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in girls room furniture and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Kids Rooms"],
   },
   {
@@ -525,8 +517,7 @@ export const services: Service[] = [
     seoTitle: "Wall Paneling UAE | Al-Awan Furniture",
     seoDescription:
       "Custom wall paneling in the UAE. Feature walls, headboard surrounds, and architectural finishes. Get a free quotation today.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in wall paneling and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Wall Panels", "Bedrooms"],
   },
   {
@@ -573,8 +564,7 @@ export const services: Service[] = [
     seoTitle: "Gaming Room Design UAE | Al-Awan Furniture",
     seoDescription:
       "Custom gaming room furniture and design in the UAE. Desks, storage, feature walls, and cable management. Request a free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in gaming room design and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Gaming Rooms", "TV Units"],
   },
   {
@@ -614,8 +604,7 @@ export const services: Service[] = [
     seoTitle: "TV Drawers & Storage Units UAE | Al-Awan Furniture",
     seoDescription:
       "Custom TV drawers and media storage units in the UAE. Organized, elegant storage designed around your entertainment area. Get a free quote.",
-    whatsappMessage:
-      "Hello Al-Awan Furniture, I'm interested in TV drawers/storage units and would like to get a quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["TV Units"],
   },
 ];

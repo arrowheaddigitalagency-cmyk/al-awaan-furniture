@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, Home, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { createMetadata } from "@/lib/seo";
 
@@ -54,9 +54,7 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
 
             <div className="grid gap-3 sm:grid-cols-2">
               <a
-                href={buildWhatsAppLink(
-                  "Hello Al-Awan Furniture, I just submitted a quote request."
-                )}
+                href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-[#25D366] px-5 py-4 text-sm font-semibold text-white shadow-md shadow-[#25D366]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-lg"

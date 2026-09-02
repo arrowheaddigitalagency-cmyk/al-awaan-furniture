@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { services } from "@/data/services";
-import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL } from "@/lib/constants";
+import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { GoogleMap } from "@/components/layout/GoogleMap";
 
@@ -94,9 +94,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href={buildWhatsAppLink(
-                      "Hello Al-Awan Furniture, I would like to get in touch."
-                    )}
+                    href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors hover:text-bronze-light"

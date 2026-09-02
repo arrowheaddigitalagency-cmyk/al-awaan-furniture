@@ -4,7 +4,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { pageBanners } from "@/lib/banners";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
+import { buildWhatsAppLink } from "@/lib/utils";
 import { Phone } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 
@@ -18,7 +19,7 @@ interface CTASectionProps {
 export function CTASection({
   title = "Have an Idea for Your Space?",
   description = "Share your requirements with us and let our team help you create furniture designed around your home.",
-  whatsappMessage = "Hello Al-Awan Furniture, I would like to discuss my project and get a quotation.",
+  whatsappMessage = DEFAULT_WHATSAPP_MESSAGE,
   showPhone = true,
 }: CTASectionProps) {
   return (
@@ -55,7 +56,7 @@ export function CTASection({
               Get Free Quote
             </Button>
             <Button
-              href={`https://wa.me/971564594043?text=${encodeURIComponent(whatsappMessage)}`}
+              href={buildWhatsAppLink(whatsappMessage)}
               variant="whatsapp"
               size="lg"
               external

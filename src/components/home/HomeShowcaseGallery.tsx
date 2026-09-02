@@ -100,7 +100,6 @@ export function HomeShowcaseGallery() {
               className="mb-3 break-inside-avoid overflow-hidden rounded-lg border border-bronze/25 bg-charcoal-soft lg:mb-4"
             >
               <CallImageLink
-                callOnly
                 location="showcase_gallery"
                 className={`image-flash group relative block overflow-hidden ${
                   i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-[4/5]" : "aspect-square"

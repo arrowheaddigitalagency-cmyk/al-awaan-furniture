@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { services } from "@/data/services";
-import { PHONE_TEL } from "@/lib/constants";
+import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { getStoredAttribution } from "@/lib/attribution";
 import { submitQuoteToWeb3Forms } from "@/lib/web3forms";
 import { buildWhatsAppLink } from "@/lib/utils";
@@ -39,9 +39,7 @@ const initialForm: FormData = {
   contactMethod: "phone",
 };
 
-const fallbackWhatsApp = buildWhatsAppLink(
-  "Hello Al-Awan Furniture, I would like to get a quotation."
-);
+const fallbackWhatsApp = buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE);
 
 export function QuoteForm({
   defaultService = "",

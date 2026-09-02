@@ -1,10 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { trackEvent } from "@/lib/tracking";
-import { getServiceBySlug } from "@/data/services";
 
 interface WhatsAppButtonProps {
   message?: string;
@@ -13,21 +12,13 @@ interface WhatsAppButtonProps {
   variant?: "button" | "floating";
 }
 
-const defaultMessage =
-  "Hello Al-Awan Furniture, I would like to discuss my project and get a quotation.";
-
 export function WhatsAppButton({
   message,
   className = "",
   label = "WhatsApp Us",
   variant = "button",
 }: WhatsAppButtonProps) {
-  const pathname = usePathname();
-  const serviceSlug = pathname.startsWith("/services/")
-    ? pathname.split("/")[2]
-    : undefined;
-  const service = serviceSlug ? getServiceBySlug(serviceSlug) : undefined;
-  const resolvedMessage = message ?? service?.whatsappMessage ?? defaultMessage;
+  const resolvedMessage = message ?? DEFAULT_WHATSAPP_MESSAGE;
   const href = buildWhatsAppLink(resolvedMessage);
 
   const handleClick = () => {

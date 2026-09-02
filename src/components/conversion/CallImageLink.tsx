@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { PHONE_TEL } from "@/lib/constants";
+import { DEFAULT_WHATSAPP_MESSAGE, PHONE_TEL } from "@/lib/constants";
 import { trackEvent } from "@/lib/tracking";
 import { buildWhatsAppLink, cn } from "@/lib/utils";
 
@@ -11,57 +12,21 @@ interface CallImageLinkProps {
   className?: string;
   location: string;
   whatsappMessage?: string;
-  callOnly?: boolean;
+  href?: string;
 }
-
-const defaultWhatsAppMessage =
-  "Hello Al-Awan Furniture, I saw your work and would like to discuss my project.";
 
 export function CallImageLink({
   children,
   className,
   location,
-  whatsappMessage = defaultWhatsAppMessage,
-  callOnly = false,
+  whatsappMessage = DEFAULT_WHATSAPP_MESSAGE,
+  href,
 }: CallImageLinkProps) {
-  if (callOnly) {
-    return (
-      <a
-        href={PHONE_TEL}
-        onClick={() => trackEvent("click_to_call", { location })}
-        className={cn("group/call block", className)}
-        aria-label="Call Al-Awan Furniture"
-      >
-        {children}
-      </a>
-    );
-  }
-
   const whatsappHref = buildWhatsAppLink(whatsappMessage);
 
-  const handleImageCall = () => {
-    trackEvent("click_to_call", { location });
-    window.location.href = PHONE_TEL;
-  };
-
-  return (
-    <div
-      className={cn("group/call relative block cursor-pointer", className)}
-      onClick={handleImageCall}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          handleImageCall();
-        }
-      }}
-      role="link"
-      tabIndex={0}
-      aria-label="Call Al-Awan Furniture"
-    >
+  const content = (
+    <>
       {children}
-
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-charcoal/0 transition-colors duration-300 group-hover/call:bg-charcoal/25" />
-
       <div
         className="absolute right-3 top-3 z-[15] flex gap-2 sm:right-4 sm:top-4 sm:gap-2.5"
         onClick={(e) => e.stopPropagation()}
@@ -85,6 +50,16 @@ export function CallImageLink({
           <WhatsAppIcon size={18} />
         </a>
       </div>
-    </div>
+    </>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className={cn("group/call relative block", className)}>
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={cn("group/call relative block", className)}>{content}</div>;
 }

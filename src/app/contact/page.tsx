@@ -5,7 +5,7 @@ import { FadeIn, SectionHeading } from "@/components/ui/FadeIn";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactQuoteForm } from "@/components/conversion/ContactQuoteForm";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { PHONE_DISPLAY, PHONE_TEL, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL } from "@/lib/constants";
+import { PHONE_DISPLAY, PHONE_TEL, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { pageBanners } from "@/lib/banners";
 import { createMetadata } from "@/lib/seo";
@@ -77,9 +77,7 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href={buildWhatsAppLink(
-                      "Hello Al-Awan Furniture, I would like to get a quotation."
-                    )}
+                    href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-charcoal hover:text-bronze"

@@ -14,6 +14,8 @@ export const SITE_URL = resolveSiteUrl();
 export const PHONE_DISPLAY = "+971 56 459 4043";
 export const PHONE_TEL = "tel:+971564594043";
 export const WHATSAPP_NUMBER = "971564594043";
+export const DEFAULT_WHATSAPP_MESSAGE =
+  "Hi, I'd like to know more about your custom furniture.";
 export const CONTACT_EMAIL = "alawanfurniture0@gmail.com";
 
 export const BUSINESS_ADDRESS = "Industrial Area, Sajja, Sharjah, UAE";

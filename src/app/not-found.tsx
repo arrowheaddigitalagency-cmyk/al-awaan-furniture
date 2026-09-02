@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/layout/PageHero";
 import { buildWhatsAppLink } from "@/lib/utils";
+import { DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { pageBanners } from "@/lib/banners";
 
 export default function NotFound() {
@@ -29,7 +30,7 @@ export default function NotFound() {
                 Explore Services
               </Button>
               <Button
-                href={buildWhatsAppLink("Hello Al-Awan Furniture, I need some help finding something on your website.")}
+                href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
                 variant="whatsapp"
                 size="lg"
                 external
