@@ -21,7 +21,33 @@ const cupboardImages = [
   "IMG-20251223-WA0105.jpg",
   "IMG-20251223-WA0106-1024x1016.jpg",
   "IMG-20251223-WA0107-1024x683.jpg",
+  ...Array.from({ length: 28 }, (_, i) => `cupboard-extra-${String(i + 1).padStart(2, "0")}.jpeg`),
 ];
+
+const gamingRoomImages = Array.from(
+  { length: 16 },
+  (_, i) => `gaming-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const entrywayImages = Array.from(
+  { length: 11 },
+  (_, i) => `entryway-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const vanityTableImages = Array.from(
+  { length: 11 },
+  (_, i) => `vanity-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const sideTableImages = Array.from(
+  { length: 8 },
+  (_, i) => `side-table-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const shoeRackImages = Array.from(
+  { length: 9 },
+  (_, i) => `shoe-rack-${String(i + 1).padStart(2, "0")}.jpeg`
+);
 
 const curtainImages = [
   "IMG-20251223-WA0120.jpg",
@@ -112,48 +138,53 @@ const defaultFaq = (serviceName: string): Service["faq"] => [
 export const services: Service[] = [
   {
     slug: "sofa-bed-upholstery",
-    name: "Sofa & Bed Upholstery",
-    shortName: "Upholstery",
+    name: "Furniture Finish",
+    shortName: "Furniture Finish",
     category: "living-bedroom",
-    headline: "Sofa & Bed Upholstery That Refreshes Your Home",
+    headline: "Furniture Finish & Refinish — Fabric Repair & Upholstery",
     description:
-      "Restore or transform your sofas and beds with premium upholstery tailored to your style and comfort.",
+      "Professional furniture finish and refinish service for fabric repair, fabric change, and upholstery refresh on sofas, beds, and padded furniture.",
     intro:
-      "Give your existing furniture a new life with professional sofa and bed upholstery. Whether you want to refresh worn fabrics, change colours to match a new interior, or upgrade cushioning for better comfort, our upholstery service is designed around your piece and your home. Ideal for homeowners across the UAE who want quality finishing without replacing perfectly good furniture frames.",
+      "Furniture Finish (also searched as furniture refinish) covers the upholstery side of your home — pieces with fabric and padding that need repairing, refreshing, or a full fabric change. From worn sofa seats and bed headboards to cushion upgrades and colour updates, we restore comfort and style without replacing the whole frame. If it has fabric that can be selected, changed, or repaired, it belongs under Furniture Finish.",
     heroImage: gallery("upholstery", ["IMG-20251223-WA0068-826x1024.jpg"])[0],
     gallery: gallery("upholstery", upholsteryGalleryImages),
     benefits: [
-      "Refresh existing sofas and beds without full replacement",
+      "Fabric repair and full fabric change",
+      "Sofa, bed, and padded furniture refresh",
       "Wide fabric and colour options",
-      "Improved comfort with quality cushioning",
-      "Tailored to your furniture dimensions",
-      "Professional finishing and attention to detail",
+      "Cushion and comfort upgrades",
+      "Restore furniture without full replacement",
     ],
     customization: [
+      {
+        title: "What We Finish",
+        items: ["Sofas & seating", "Beds & headboards", "Cushions & pads", "Fabric repairs"],
+      },
       {
         title: "Fabrics",
         items: ["Linen", "Velvet", "Bouclé", "Performance fabrics", "Textured weaves"],
       },
       {
-        title: "Colours",
-        items: ["Neutrals", "Earth tones", "Deep accents", "Custom colour matching"],
-      },
-      {
-        title: "Finishing",
-        items: ["Piping & contrast trims", "Button detailing", "Cushion upgrades", "Headboard upholstery"],
+        title: "Options",
+        items: ["Colour change", "Piping & trims", "Button detailing", "Cushion upgrades"],
       },
     ],
     faq: [
       {
+        question: "What comes under Furniture Finish?",
+        answer:
+          "Furniture Finish / furniture refinish is for pieces with fabric and upholstery — sofas, beds, cushions, and similar padded furniture that need fabric repair, fabric change, or reupholstery.",
+      },
+      {
         question: "Can you reupholster my existing sofa or bed?",
         answer:
-          "Yes. We work with your existing furniture frames and replace or upgrade the upholstery to your chosen fabric and style.",
+          "Yes. We work with your existing furniture frames and replace or upgrade the fabric and padding to your chosen style.",
       },
-      ...defaultFaq("upholstery").slice(1),
+      ...defaultFaq("furniture finish").slice(1),
     ],
-    seoTitle: "Sofa & Bed Upholstery UAE | Al-Awan Furniture",
+    seoTitle: "Furniture Finish & Refinish UAE | Al-Awan Furniture",
     seoDescription:
-      "Professional sofa and bed upholstery in the UAE. Refresh your furniture with premium fabrics, custom colours, and expert finishing. Request a free quote.",
+      "Furniture finish and furniture refinish in the UAE — fabric repair, fabric change, and professional sofa & bed upholstery. Refresh your furniture without full replacement. Free quote.",
     whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Upholstery", "Bedrooms"],
   },
@@ -530,15 +561,8 @@ export const services: Service[] = [
       "Custom gaming room furniture and interiors with smart storage, cable management, and immersive design.",
     intro:
       "Level up your gaming space with furniture designed for how you play. Our gaming room solutions include custom desks, display shelving, storage for equipment, and feature wall designs — all planned around your setup, screen configuration, and room layout. We combine practical cable management and ergonomic considerations with a look that makes your gaming room a destination.",
-    heroImage: gallery("gaming-rooms", ["IMG-20251223-WA0074-1.jpg"])[0],
-    gallery: gallery("gaming-rooms", [
-      "IMG-20251223-WA0074-1.jpg",
-      "IMG-20251223-WA0075-1019x1024.jpg",
-      "IMG-20251223-WA0076-853x1024.jpg",
-      "IMG-20251223-WA0077-1024x1021.jpg",
-      "IMG-20251223-WA0078-842x1024.jpg",
-      "IMG-20251223-WA0079-682x1024.jpg",
-    ]),
+    heroImage: gallery("gaming-rooms", gamingRoomImages)[0],
+    gallery: gallery("gaming-rooms", gamingRoomImages),
     benefits: [
       "Custom desk and storage layouts",
       "Cable management built in",
@@ -566,6 +590,166 @@ export const services: Service[] = [
       "Custom gaming room furniture and design in the UAE. Desks, storage, feature walls, and cable management. Request a free quote.",
     whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["Gaming Rooms", "TV Units"],
+  },
+  {
+    slug: "entryway-furniture",
+    name: "Entryway Furniture",
+    shortName: "Entryway",
+    category: "storage-media",
+    headline: "Entryway Furniture That Welcomes You Home",
+    description:
+      "Custom entryway units with seating, mirrors, storage, and lighting designed for UAE homes.",
+    intro:
+      "Make the first impression of your home count. Our custom entryway furniture combines practical storage for shoes and daily essentials with elegant seating, mirrors, and ambient lighting. From slim foyer consoles to full feature walls with drawers, niches, and overhead cabinets — every unit is designed around your entrance layout and lifestyle.",
+    heroImage: gallery("entryway", entrywayImages)[0],
+    gallery: gallery("entryway", entrywayImages),
+    benefits: [
+      "Seating, storage, and mirror in one design",
+      "Built-in lighting and display niches",
+      "Shoe and daily-item storage options",
+      "Sized to fit narrow or open foyers",
+      "Premium finishes that match your home",
+    ],
+    customization: [
+      {
+        title: "Layouts",
+        items: ["Bench + drawers", "Console + mirror", "Full feature walls", "Corner entry units"],
+      },
+      {
+        title: "Features",
+        items: ["Backlit mirrors", "Open niches", "Overhead cabinets", "Under-bench drawers"],
+      },
+      {
+        title: "Finishes",
+        items: ["Wood textures", "Matte laminates", "Soft upholstery seats", "Metal accents"],
+      },
+    ],
+    faq: defaultFaq("entryway furniture"),
+    seoTitle: "Custom Entryway Furniture UAE | Al-Awan Furniture",
+    seoDescription:
+      "Custom entryway furniture in the UAE — benches, mirrors, storage, and lighting designed for your foyer. Request a free quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
+    relatedProjectCategories: ["Wardrobes", "Living Rooms"],
+  },
+  {
+    slug: "vanity-tables",
+    name: "Vanity Tables",
+    shortName: "Vanity Tables",
+    category: "living-bedroom",
+    headline: "Luxury Vanity Tables Made for Your Routine",
+    description:
+      "Custom vanity tables with drawers, mirrors, lighting, and storage tailored to your bedroom or dressing area.",
+    intro:
+      "Create a dedicated beauty and grooming space with a custom vanity table designed around your habits. We craft wall-mounted and freestanding vanities with thoughtful drawer layouts, LED-lit mirrors, side shelving, and finishes that coordinate with your bedroom furniture. From compact corner vanities to statement makeup desks, every detail is measured and built for your room.",
+    heroImage: gallery("vanity-tables", vanityTableImages)[0],
+    gallery: gallery("vanity-tables", vanityTableImages),
+    benefits: [
+      "Drawer layouts planned for cosmetics and jewelry",
+      "LED mirror and ambient lighting options",
+      "Integrated side shelving and display niches",
+      "Matched to bedroom furniture finishes",
+      "Custom sizing for any room layout",
+    ],
+    customization: [
+      {
+        title: "Configurations",
+        items: ["Wall-mounted desks", "Freestanding vanities", "Mirror + shelf combos", "Corner units"],
+      },
+      {
+        title: "Lighting",
+        items: ["Backlit mirrors", "Under-desk LED", "Shelf lighting", "Makeup-ready brightness"],
+      },
+      {
+        title: "Storage",
+        items: ["Multi-drawer banks", "Hidden compartments", "Open product shelves", "Stool options"],
+      },
+    ],
+    faq: defaultFaq("vanity table"),
+    seoTitle: "Custom Vanity Tables UAE | Al-Awan Furniture",
+    seoDescription:
+      "Custom vanity tables in the UAE with drawers, LED mirrors, and premium finishes. Designed for bedrooms and dressing areas. Get a free quote.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
+    relatedProjectCategories: ["Bedrooms"],
+  },
+  {
+    slug: "side-tables",
+    name: "Side Tables",
+    shortName: "Side Tables",
+    category: "living-bedroom",
+    headline: "Custom Side Tables for Bedroom and Living Spaces",
+    description:
+      "Bespoke side tables and nightstands with drawers, finishes, and proportions tailored to your furniture.",
+    intro:
+      "Complete your bedroom or living room with side tables designed to match your bed, sofa, or media wall. We create custom nightstands and accent tables with drawer storage, premium finishes, and proportions that sit perfectly beside your furniture — from slim modern designs to deeper storage units with soft-close drawers.",
+    heroImage: gallery("side-tables", sideTableImages)[0],
+    gallery: gallery("side-tables", sideTableImages),
+    benefits: [
+      "Matched height and style to your bed or sofa",
+      "Drawer and open-shelf storage options",
+      "Premium wood, lacquer, and fabric finishes",
+      "Soft-close and handle-less designs available",
+      "Sold as singles or coordinated pairs",
+    ],
+    customization: [
+      {
+        title: "Styles",
+        items: ["Nightstands", "Living room side tables", "Floating units", "Two-drawer designs"],
+      },
+      {
+        title: "Details",
+        items: ["Handle-less fronts", "Metal legs", "Wood frames", "Upholstered drawer faces"],
+      },
+      {
+        title: "Finishes",
+        items: ["Walnut & oak tones", "Matte lacquer", "Two-tone combinations", "Custom colour match"],
+      },
+    ],
+    faq: defaultFaq("side table"),
+    seoTitle: "Custom Side Tables UAE | Al-Awan Furniture",
+    seoDescription:
+      "Custom side tables and nightstands in the UAE. Matched finishes, drawer storage, and sizes for bedroom and living spaces. Request a free quote.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
+    relatedProjectCategories: ["Bedrooms", "Living Rooms"],
+  },
+  {
+    slug: "shoe-racks",
+    name: "Shoe Racks",
+    shortName: "Shoe Racks",
+    category: "storage-media",
+    headline: "Custom Shoe Racks Built for Real Storage Needs",
+    description:
+      "Fitted shoe racks and pull-out shoe cabinets designed to keep entrances and closets organized.",
+    intro:
+      "Stop cluttering your entrance with scattered footwear. Our custom shoe racks include pull-out vertical units, closed cabinets, and open shelving systems sized for your collection and your space. Whether you need a slim foyer shoe cabinet or a full wardrobe-integrated pull-out system, we design storage that keeps shoes accessible, visible, and neatly arranged.",
+    heroImage: gallery("shoe-racks", shoeRackImages)[0],
+    gallery: gallery("shoe-racks", shoeRackImages),
+    benefits: [
+      "Pull-out and closed cabinet options",
+      "High-capacity vertical storage",
+      "Designed for UAE entrance and wardrobe spaces",
+      "Matched finishes with nearby furniture",
+      "Easy access with durable sliding systems",
+    ],
+    customization: [
+      {
+        title: "Types",
+        items: ["Pull-out shoe towers", "Closed shoe cabinets", "Open shelving racks", "Bench + shoe storage"],
+      },
+      {
+        title: "Interiors",
+        items: ["Slanted shelves", "Flat shelves", "Adjustable tiers", "Mixed open/closed layouts"],
+      },
+      {
+        title: "Finishes",
+        items: ["White & wood combos", "Full wood textures", "Matte laminates", "Handle styles"],
+      },
+    ],
+    faq: defaultFaq("shoe rack"),
+    seoTitle: "Custom Shoe Racks UAE | Al-Awan Furniture",
+    seoDescription:
+      "Custom shoe racks and pull-out shoe cabinets in the UAE. High-capacity storage designed for entrances and closets. Get a free quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
+    relatedProjectCategories: ["Wardrobes"],
   },
   {
     slug: "tv-drawers",
@@ -617,12 +801,20 @@ export const serviceGroups: ServiceGroup[] = [
       "sofa-bed-upholstery",
       "custom-sofas-beds",
       "dressing-tables",
+      "vanity-tables",
+      "side-tables",
     ],
   },
   {
     title: "Storage & Media",
     description: "Smart storage and entertainment solutions",
-    services: ["cupboards", "tv-units", "tv-drawers"],
+    services: [
+      "cupboards",
+      "tv-units",
+      "tv-drawers",
+      "entryway-furniture",
+      "shoe-racks",
+    ],
   },
   {
     title: "Interior Finishing",
