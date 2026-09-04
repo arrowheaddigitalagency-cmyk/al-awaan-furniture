@@ -40,6 +40,8 @@ export interface Project {
   description: string;
   images: string[];
   featured?: boolean;
+  /** Optional override linking this project to a specific service page. */
+  serviceSlug?: string;
 }
 
 export interface ServiceGroup {

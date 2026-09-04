@@ -18,16 +18,10 @@ import { ProcessSection } from "@/components/service/ProcessSection";
 import { CTASection } from "@/components/conversion/CTASection";
 import { CallImageLink } from "@/components/conversion/CallImageLink";
 import { services } from "@/data/services";
-import { getFeaturedProjects } from "@/data/projects";
-
-const featuredServices = [
-  "tv-units",
-  "cupboards",
-  "sofa-bed-upholstery",
-  "wall-paneling",
-  "kids-rooms",
-  "curtains",
-];
+import {
+  getFeaturedProjects,
+  getServiceHrefForProject,
+} from "@/data/projects";
 
 export default function HomePage() {
   const projects = getFeaturedProjects().slice(0, 9);
@@ -47,62 +41,55 @@ export default function HomePage() {
             className="mb-12 md:mb-14"
           />
 
-          <StaggerChildren className="grid gap-5 md:grid-cols-12" stagger={0.12}>
-            {featuredServices.map((slug, i) => {
-              const service = services.find((s) => s.slug === slug);
-              if (!service) return null;
-              const isLarge = i === 0 || i === 3;
+          <StaggerChildren
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            stagger={0.06}
+          >
+            {services.map((service) => (
+              <StaggerItem key={service.slug} variant="scale">
+                <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
+                  <CallImageLink
+                    href={`/services/${service.slug}`}
+                    location="home_service_card"
+                    className="image-flash image-glow relative block aspect-[4/3] overflow-hidden"
+                  >
+                    <Image
+                      src={service.heroImage}
+                      alt={service.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover/call:scale-105"
+                    />
+                    <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10" />
+                    <div className="absolute inset-0 z-[1] ring-1 ring-inset ring-white/10" />
+                  </CallImageLink>
 
-              return (
-                <StaggerItem
-                  key={slug}
-                  variant="scale"
-                  className={isLarge ? "md:col-span-7" : "md:col-span-5"}
-                >
-                  <article className="group relative overflow-hidden rounded-lg border border-bronze/25">
-                    <CallImageLink
-                      href={`/services/${slug}`}
-                      location="home_service_card"
-                      className={`image-flash image-glow relative block overflow-hidden ${isLarge ? "aspect-[16/10]" : "aspect-[4/3]"}`}
-                    >
-                      <Image
-                        src={service.heroImage}
-                        alt={service.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
-                      />
-                      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10" />
-                      <div className="absolute inset-0 z-[1] ring-1 ring-inset ring-white/10" />
-                    </CallImageLink>
-
-                    <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8 pointer-events-none">
-                      <span className="inline-block rounded-full border border-bronze/30 bg-bronze/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-bronze-light backdrop-blur-sm">
-                        {service.shortName}
-                      </span>
-                      <h3 className="mt-3 font-display text-2xl text-ivory md:text-3xl lg:text-4xl">
-                        <Link
-                          href={`/services/${slug}`}
-                          className="pointer-events-auto hover:text-bronze-light"
-                        >
-                          {service.name}
-                        </Link>
-                      </h3>
-                      <p className="mt-2 max-w-md text-sm text-ivory/70 line-clamp-2">
-                        {service.description}
-                      </p>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6 pointer-events-none">
+                    <span className="inline-block rounded-full border border-bronze/30 bg-bronze/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-bronze-light backdrop-blur-sm">
+                      {service.shortName}
+                    </span>
+                    <h3 className="mt-3 font-display text-xl text-ivory md:text-2xl">
                       <Link
-                        href={`/services/${slug}`}
-                        className="pointer-events-auto mt-4 inline-flex items-center gap-2 text-sm font-medium text-bronze-light transition-all hover:gap-3"
+                        href={`/services/${service.slug}`}
+                        className="pointer-events-auto hover:text-bronze-light"
                       >
-                        Explore Service
-                        <ArrowRight className="h-4 w-4" />
+                        {service.name}
                       </Link>
-                    </div>
-                  </article>
-                </StaggerItem>
-              );
-            })}
+                    </h3>
+                    <p className="mt-2 max-w-md text-sm text-ivory/70 line-clamp-2">
+                      {service.description}
+                    </p>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="pointer-events-auto mt-3 inline-flex items-center gap-2 text-sm font-medium text-bronze-light transition-all hover:gap-3"
+                    >
+                      Explore Service
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </article>
+              </StaggerItem>
+            ))}
           </StaggerChildren>
 
           <FadeIn variant="fade-up" delay={0.3} className="mt-12 text-center">
@@ -131,33 +118,38 @@ export default function HomePage() {
           />
 
           <StaggerChildren className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
-            {projects.map((project) => (
-              <StaggerItem key={project.id} variant="fade-up">
-                <article className="premium-card group image-glow overflow-hidden">
-                  <CallImageLink
-                    location="home_project_card"
-                    className="image-flash relative block aspect-[4/5] overflow-hidden"
-                  >
-                    <Image
-                      src={project.images[0]}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover/call:scale-105"
-                    />
-                    <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-bronze-light">
-                        {project.category}
-                      </p>
-                      <h3 className="mt-1 font-display text-xl text-ivory md:text-2xl">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </CallImageLink>
-                </article>
-              </StaggerItem>
-            ))}
+            {projects.map((project) => {
+              const href = getServiceHrefForProject(project);
+
+              return (
+                <StaggerItem key={project.id} variant="fade-up">
+                  <article className="premium-card group image-glow overflow-hidden">
+                    <CallImageLink
+                      href={href}
+                      location="home_project_card"
+                      className="image-flash relative block aspect-[4/5] overflow-hidden"
+                    >
+                      <Image
+                        src={project.images[0]}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
+                      />
+                      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-bronze-light">
+                          {project.category}
+                        </p>
+                        <h3 className="mt-1 font-display text-xl text-ivory md:text-2xl">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </CallImageLink>
+                  </article>
+                </StaggerItem>
+              );
+            })}
           </StaggerChildren>
 
           <FadeIn variant="fade-up" delay={0.2} className="mt-12">

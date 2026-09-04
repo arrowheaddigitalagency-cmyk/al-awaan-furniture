@@ -13,6 +13,29 @@ export const projectCategories = [
   "Living Rooms",
 ] as const;
 
+/** Map portfolio categories to their matching service page. */
+export const projectCategoryToServiceSlug: Record<string, string> = {
+  Sofas: "custom-sofas-beds",
+  Bedrooms: "custom-sofas-beds",
+  "TV Units": "tv-units",
+  Wardrobes: "cupboards",
+  "Kids Rooms": "kids-rooms",
+  "Wall Panels": "wall-paneling",
+  "Gaming Rooms": "gaming-rooms",
+  Upholstery: "sofa-bed-upholstery",
+  "Living Rooms": "curtains",
+};
+
+export function getServiceHrefForProjectCategory(category: string): string {
+  const slug = projectCategoryToServiceSlug[category];
+  return slug ? `/services/${slug}` : "/services";
+}
+
+export function getServiceHrefForProject(project: Project): string {
+  if (project.serviceSlug) return `/services/${project.serviceSlug}`;
+  return getServiceHrefForProjectCategory(project.category);
+}
+
 export const projects: Project[] = [
   {
     id: "media-wall-01",
@@ -83,6 +106,7 @@ export const projects: Project[] = [
     id: "dressing-01",
     title: "Bedroom Dressing Area",
     category: "Bedrooms",
+    serviceSlug: "dressing-tables",
     description:
       "Custom dressing table with mirror integration and drawer storage, coordinated with bedroom furniture.",
     images: [
@@ -96,6 +120,7 @@ export const projects: Project[] = [
     id: "sofa-bed-01",
     title: "Master Bedroom Suite",
     category: "Bedrooms",
+    serviceSlug: "custom-sofas-beds",
     description:
       "Custom bed design with upholstered headboard and complementary bedside storage.",
     images: [
@@ -109,6 +134,7 @@ export const projects: Project[] = [
     id: "tv-unit-02",
     title: "Minimal Media Console",
     category: "TV Units",
+    serviceSlug: "tv-units",
     description:
       "A clean-lined TV unit with floating shelves and drawer storage for a modern living room.",
     images: [
@@ -120,6 +146,7 @@ export const projects: Project[] = [
     id: "gaming-01",
     title: "Gaming Setup Wall",
     category: "Gaming Rooms",
+    serviceSlug: "gaming-rooms",
     description:
       "Feature wall with integrated shelving and ambient lighting designed around a gaming desk setup.",
     images: [
