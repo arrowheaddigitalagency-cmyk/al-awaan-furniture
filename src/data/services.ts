@@ -16,7 +16,7 @@ const customSofaImages = Array.from(
 );
 
 const customBedImages = Array.from(
-  { length: 9 },
+  { length: 26 },
   (_, i) => `bed-${String(i + 1).padStart(2, "0")}.jpeg`
 );
 
@@ -37,7 +37,7 @@ const cupboardImages = [
   "IMG-20251223-WA0105.jpg",
   "IMG-20251223-WA0106-1024x1016.jpg",
   "IMG-20251223-WA0107-1024x683.jpg",
-  ...Array.from({ length: 28 }, (_, i) => `cupboard-extra-${String(i + 1).padStart(2, "0")}.jpeg`),
+  ...Array.from({ length: 27 }, (_, i) => `cupboard-extra-${String(i + 1).padStart(2, "0")}.jpeg`),
 ];
 
 const gamingRoomImages = Array.from(
@@ -91,6 +91,11 @@ const wallPanelImages = [
   "IMG-20251223-WA0066-823x1024.jpg",
   "IMG-20251223-WA0067-835x1024.jpg",
 ];
+
+const interiorFitOutImages = Array.from(
+  { length: 35 },
+  (_, i) => `fit-out-${String(i + 1).padStart(2, "0")}.jpeg`
+);
 
 const defaultFaq = (serviceName: string): Service["faq"] => [
   {
@@ -493,6 +498,58 @@ export const services: Service[] = [
     relatedProjectCategories: ["Wall Panels", "Bedrooms"],
   },
   {
+    slug: "interior-fit-out",
+    name: "Interior Fit-Out Solutions",
+    shortName: "Interior Fit-Out",
+    category: "interior-finishing",
+    headline: "Complete Interior Fit-Out Solutions for Your Space",
+    description:
+      "End-to-end interior fit-out solutions — from planning and custom furniture to finishing details that bring your space together.",
+    intro:
+      "Interior Fit-Out Solutions cover the full transformation of your space. Beyond single furniture pieces, we plan and deliver coordinated interiors — custom units, finishes, storage, and detailing that work as one design. Whether you are fitting out a villa, apartment, office, or a single room, our team handles measurement, fabrication, and installation so the result feels cohesive, practical, and built for how you live.",
+    heroImage: gallery("interior-fit-out", interiorFitOutImages)[0],
+    gallery: gallery("interior-fit-out", interiorFitOutImages),
+    benefits: [
+      "Complete room or space fit-out",
+      "Coordinated furniture and finishes",
+      "Measured, fabricated, and installed by one team",
+      "Suitable for homes, villas, and commercial spaces",
+      "Design that matches your lifestyle and layout",
+    ],
+    customization: [
+      {
+        title: "Scope",
+        items: ["Full room fit-out", "Partial renovations", "Feature walls & storage", "Furniture packages"],
+      },
+      {
+        title: "Spaces",
+        items: ["Living areas", "Bedrooms", "Offices", "Reception & commercial"],
+      },
+      {
+        title: "Finishes",
+        items: ["Wood & laminate", "Painted panels", "Upholstery accents", "Custom colour matching"],
+      },
+    ],
+    faq: [
+      {
+        question: "What does Interior Fit-Out include?",
+        answer:
+          "It can include planning, custom furniture, storage units, paneling, and finishing details — scoped to your room or full space. We tailor the package after understanding your layout and goals.",
+      },
+      {
+        question: "Can you fit out just one room?",
+        answer:
+          "Yes. We handle single-room fit-outs as well as multi-room or full-property projects.",
+      },
+      ...defaultFaq("interior fit-out").slice(2),
+    ],
+    seoTitle: "Interior Fit-Out Solutions UAE | Al-Awan Furniture",
+    seoDescription:
+      "Interior fit-out solutions in the UAE — complete custom interiors, furniture, storage, and finishing for homes and commercial spaces. Free quotation.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
+    relatedProjectCategories: ["Living Rooms", "Bedrooms", "Wall Panels"],
+  },
+  {
     slug: "gaming-rooms",
     name: "Gaming Room Design & Furniture",
     shortName: "Gaming Rooms",
@@ -760,7 +817,7 @@ export const serviceGroups: ServiceGroup[] = [
   {
     title: "Interior Finishing",
     description: "Details that complete your interior",
-    services: ["curtains", "wall-paneling"],
+    services: ["curtains", "wall-paneling", "interior-fit-out"],
   },
   {
     title: "Specialized Rooms",
