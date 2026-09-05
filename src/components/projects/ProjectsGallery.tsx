@@ -28,10 +28,10 @@ export function ProjectsGallery() {
       <PageHero
         image={pageBanners.projects}
         alt="Kids room interior project by Al-Awan Furniture"
-        eyebrow="Our Work"
-        title="Projects & Portfolio"
-        description="Explore our custom furniture and interior projects — from media walls and wardrobes to bedrooms, curtains, and kids rooms."
-        breadcrumbs={[{ label: "Projects" }]}
+        eyebrow="What We Can Do"
+        title="Work We Can Create For You"
+        description="Browse designs that show the custom furniture and interior work we can deliver — from media walls and wardrobes to bedrooms, curtains, and kids rooms."
+        breadcrumbs={[{ label: "What We Can Do" }]}
       />
 
       <section className="section-padding-sm">
@@ -96,7 +96,7 @@ export function ProjectsGallery() {
 
           {filtered.length === 0 && (
             <p className="py-10 text-center text-warm-gray">
-              No projects found in this category yet.
+              No examples found in this category yet.
             </p>
           )}
         </div>

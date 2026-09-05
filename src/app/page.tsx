@@ -111,9 +111,9 @@ export default function HomePage() {
         />
         <div className="container-wide relative">
           <SectionHeading
-            eyebrow="Portfolio"
-            title="Featured Projects"
-            description="A selection of our recent custom furniture and interior work across the UAE."
+            eyebrow="What We Can Do"
+            title="Work We Deliver For Your Home"
+            description="These designs show the custom furniture and interiors we can create for you — from media walls and wardrobes to bedrooms, curtains, and kids rooms."
             className="mb-14"
           />
 
@@ -154,7 +154,7 @@ export default function HomePage() {
 
           <FadeIn variant="fade-up" delay={0.2} className="mt-12">
             <Button href="/projects" variant="primary" size="lg">
-              View All Projects
+              See All We Can Build
             </Button>
           </FadeIn>
         </div>

@@ -78,18 +78,18 @@ export function HomeShowcaseGallery() {
               Our Craftsmanship
             </p>
             <h2 className="mt-2 font-display text-3xl text-ivory md:text-4xl">
-              Real Projects. Real Finishing.
+              Designs We Can Build For You
             </h2>
             <p className="mt-3 max-w-xl text-sm text-ivory/65 md:text-base">
               A curated look at custom furniture, wardrobes, media walls, and interiors
-              crafted for homes across the UAE.
+              we can craft for homes across the UAE.
             </p>
           </div>
           <Link
             href="/projects"
             className="inline-flex items-center text-sm font-semibold text-bronze-light transition-colors hover:text-ivory"
           >
-            View Full Portfolio →
+            See What We Can Do →
           </Link>
         </div>
 

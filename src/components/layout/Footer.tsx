@@ -8,7 +8,7 @@ import { GoogleMap } from "@/components/layout/GoogleMap";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
+  { href: "/projects", label: "What We Can Do" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy-policy", label: "Privacy Policy" },

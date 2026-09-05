@@ -66,8 +66,8 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
           <FadeIn>
             <SectionHeading
               eyebrow="Gallery"
-              title="Our Work"
-              description={`Explore recent ${service.shortName.toLowerCase()} projects from our portfolio.`}
+              title="Work We Can Do"
+              description={`Examples of ${service.shortName.toLowerCase()} work we can create for your home.`}
               align="center"
               className="mx-auto mb-8"
             />
@@ -156,8 +156,9 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
           <div className="container-wide">
             <FadeIn>
               <SectionHeading
-                eyebrow="Related Work"
-                title="Related Projects"
+                eyebrow="More Ideas"
+                title="Similar Work We Can Do"
+                description="More examples of designs and finishes we can create for your space."
                 align="center"
                 className="mx-auto mb-8"
               />
@@ -193,7 +194,7 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
                 href="/projects"
                 className="text-sm font-medium text-bronze hover:text-charcoal"
               >
-                View All Projects →
+                See All We Can Build →
               </Link>
             </div>
           </div>

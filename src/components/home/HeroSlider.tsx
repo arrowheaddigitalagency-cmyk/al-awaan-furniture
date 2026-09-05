@@ -134,7 +134,7 @@ export function HeroSlider() {
                     href="/projects"
                     className="hero-text-shadow-sm inline-flex items-center gap-1.5 font-semibold text-ivory/90 underline decoration-ivory/30 underline-offset-4 transition-colors hover:text-white hover:decoration-ivory/60"
                   >
-                    Explore Our Work
+                    Explore What We Can Do
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
