@@ -28,6 +28,8 @@ const GTM_ID =
   process.env.NEXT_PUBLIC_GTM_ID?.trim() || "GTM-WG5HM9LJ";
 const GA_ID =
   process.env.NEXT_PUBLIC_GA_ID?.trim() || "G-X23WYFR8KE";
+const AW_ID =
+  process.env.NEXT_PUBLIC_AW_ID?.trim() || "AW-18413585080";
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() ||
   "mXLFsSGK429potaBhsl6hDnNj__wy_8yh-udgys77ZI";
@@ -97,11 +99,16 @@ export default function RootLayout({
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${AW_ID}`}
+          strategy="afterInteractive"
+        />
         <Script id="ga-gtag" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${GA_ID}');
+          gtag('config', '${AW_ID}');
         `}</Script>
         <TrackingProvider>
           <div className="flex flex-col">
