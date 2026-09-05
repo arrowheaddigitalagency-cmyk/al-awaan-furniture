@@ -51,15 +51,19 @@ export default function HomePage() {
                   <CallImageLink
                     href={`/services/${service.slug}`}
                     location="home_service_card"
-                    className="image-flash image-glow relative block aspect-[4/3] overflow-hidden"
+                    className="image-flash image-glow relative block aspect-[4/3] overflow-hidden bg-charcoal"
                   >
-                    <Image
-                      src={service.heroImage}
-                      alt={service.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover/call:scale-105"
-                    />
+                    {service.heroImage ? (
+                      <Image
+                        src={service.heroImage}
+                        alt={service.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover/call:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal-soft to-charcoal" />
+                    )}
                     <div className="absolute inset-0 z-[1] bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/10" />
                     <div className="absolute inset-0 z-[1] ring-1 ring-inset ring-white/10" />
                   </CallImageLink>

@@ -85,29 +85,6 @@ const sofaBedImages = [
   "IMG-20251223-WA0073-756x1024.jpg",
 ];
 
-const upholsteryGalleryImages = [
-  ...sofaBedImages,
-  "upholstery-gallery-01.jpeg",
-  "upholstery-gallery-02.jpeg",
-  "upholstery-gallery-03.jpeg",
-  "upholstery-gallery-04.jpeg",
-  "upholstery-gallery-05.jpeg",
-  "upholstery-gallery-06.jpeg",
-  "upholstery-gallery-07.jpeg",
-  "upholstery-gallery-08.jpeg",
-  "upholstery-gallery-09.jpeg",
-  "upholstery-gallery-10.jpeg",
-];
-
-const dressingImages = [
-  "IMG-20251223-WA0051.jpg",
-  "IMG-20251223-WA0052-1.jpg",
-  "IMG-20251223-WA0053-1024x1009.jpg",
-  "IMG-20251223-WA0054.jpg",
-  "IMG-20251223-WA0055-819x1024.jpg",
-  "IMG-20251223-WA0056-682x1024.jpg",
-];
-
 const defaultFaq = (serviceName: string): Service["faq"] => [
   {
     question: "Can you customize the dimensions?",
@@ -146,8 +123,8 @@ export const services: Service[] = [
       "Professional furniture finish and refinish service for fabric repair, fabric change, and upholstery refresh on sofas, beds, and padded furniture.",
     intro:
       "Furniture Finish (also searched as furniture refinish) covers the upholstery side of your home — pieces with fabric and padding that need repairing, refreshing, or a full fabric change. From worn sofa seats and bed headboards to cushion upgrades and colour updates, we restore comfort and style without replacing the whole frame. If it has fabric that can be selected, changed, or repaired, it belongs under Furniture Finish.",
-    heroImage: gallery("upholstery", ["IMG-20251223-WA0068-826x1024.jpg"])[0],
-    gallery: gallery("upholstery", upholsteryGalleryImages),
+    heroImage: "",
+    gallery: [],
     benefits: [
       "Fabric repair and full fabric change",
       "Sofa, bed, and padded furniture refresh",
@@ -189,16 +166,56 @@ export const services: Service[] = [
     relatedProjectCategories: ["Upholstery", "Bedrooms"],
   },
   {
-    slug: "custom-sofas-beds",
-    name: "Custom Sofas & Beds",
-    shortName: "Sofas & Beds",
+    slug: "custom-sofas",
+    name: "Custom Sofas",
+    shortName: "Custom Sofas",
     category: "living-bedroom",
-    headline: "Custom Sofas & Beds Designed for Your Home",
+    headline: "Custom Sofas Designed for Your Living Space",
     description:
-      "Bespoke sofas and beds crafted to your dimensions, style, and comfort preferences across the UAE.",
+      "Bespoke sofas crafted to your dimensions, style, and comfort preferences across the UAE.",
     intro:
-      "Create furniture that truly belongs in your home. Our custom sofas and beds are designed around your room size, lifestyle, and aesthetic — from elegant master bedrooms to inviting living spaces. Choose configurations, materials, and finishes that reflect how you live, with every detail considered from frame to final stitch.",
-    heroImage: gallery("sofas-beds", ["IMG-20251223-WA0071.jpg"])[0],
+      "Create seating that truly belongs in your home. Our custom sofas are designed around your room size, lifestyle, and aesthetic — from elegant living rooms to inviting lounge corners. Choose configurations, materials, and finishes that reflect how you live, with every detail considered from frame to final stitch.",
+    heroImage: "",
+    gallery: [],
+    benefits: [
+      "Made to your exact room dimensions",
+      "L-shape, sectional, and straight configurations",
+      "Premium fabrics and finishes",
+      "Comfort tailored to how you sit and relax",
+      "Designed for UAE homes and lifestyles",
+    ],
+    customization: [
+      {
+        title: "Configurations",
+        items: ["L-shape", "Sectional", "Straight sofas", "Accent seating"],
+      },
+      {
+        title: "Fabrics & Materials",
+        items: ["Linen", "Velvet", "Bouclé", "Performance fabrics", "Leather options"],
+      },
+      {
+        title: "Details",
+        items: ["Piping & trims", "Cushion fills", "Leg styles", "Custom colour matching"],
+      },
+    ],
+    faq: defaultFaq("custom sofa"),
+    seoTitle: "Custom Sofas UAE | Al-Awan Furniture",
+    seoDescription:
+      "Custom-made sofas for UAE homes. Bespoke designs, premium fabrics, and professional installation. Get your free quotation today.",
+    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
+    relatedProjectCategories: ["Sofas", "Living Rooms"],
+  },
+  {
+    slug: "custom-beds",
+    name: "Custom Beds",
+    shortName: "Custom Beds",
+    category: "living-bedroom",
+    headline: "Custom Beds Designed for Your Bedroom",
+    description:
+      "Bespoke beds crafted to your dimensions, style, and comfort preferences across the UAE.",
+    intro:
+      "Create a bed that truly belongs in your bedroom. Our custom beds are designed around your room size, storage needs, and aesthetic — from elegant master bedrooms to calm guest rooms. Choose headboard styles, base options, materials, and finishes that reflect how you rest, with every detail considered from frame to final finish.",
+    heroImage: gallery("sofas-beds", sofaBedImages)[0],
     gallery: gallery("sofas-beds", sofaBedImages),
     benefits: [
       "Made to your exact room dimensions",
@@ -213,20 +230,20 @@ export const services: Service[] = [
         items: ["Platform beds", "Panel headboards", "Upholstered headboards", "Storage bases"],
       },
       {
-        title: "Sofa Configurations",
-        items: ["L-shape", "Sectional", "Straight sofas", "Accent seating"],
+        title: "Details",
+        items: ["Soft-close drawers", "Floating frames", "Matching side tables", "Wall panel surrounds"],
       },
       {
         title: "Materials",
         items: ["Wood veneers", "Lacquer finishes", "Upholstered panels", "Metal accents"],
       },
     ],
-    faq: defaultFaq("custom sofa or bed"),
-    seoTitle: "Custom Sofas & Beds UAE | Al-Awan Furniture",
+    faq: defaultFaq("custom bed"),
+    seoTitle: "Custom Beds UAE | Al-Awan Furniture",
     seoDescription:
-      "Custom-made sofas and beds for UAE homes. Bespoke designs, premium materials, and professional installation. Get your free quotation today.",
+      "Custom-made beds for UAE homes. Bespoke designs, premium materials, and professional installation. Get your free quotation today.",
     whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
-    relatedProjectCategories: ["Bedrooms", "Sofas"],
+    relatedProjectCategories: ["Bedrooms"],
   },
   {
     slug: "cupboards",
@@ -309,46 +326,6 @@ export const services: Service[] = [
     relatedProjectCategories: ["TV Units"],
   },
   {
-    slug: "dressing-tables",
-    name: "Dressing Tables",
-    shortName: "Dressing Tables",
-    category: "living-bedroom",
-    headline: "Elegant Dressing Tables for Your Bedroom",
-    description:
-      "Custom dressing tables and vanity units designed with storage, mirrors, and finishes to complement your bedroom.",
-    intro:
-      "A well-designed dressing table brings both function and refinement to your bedroom. We create custom vanity units with thoughtfully planned drawer storage, mirror placement, and surface space — finished to harmonize with your existing bedroom furniture. From compact designs for smaller rooms to statement pieces with ample storage, every detail is tailored to your routine.",
-    heroImage: gallery("dressing-tables", ["IMG-20251223-WA0051.jpg"])[0],
-    gallery: gallery("dressing-tables", dressingImages),
-    benefits: [
-      "Sized to fit your bedroom layout",
-      "Integrated mirror and lighting options",
-      "Drawer and compartment storage",
-      "Coordinated with bedroom furniture",
-      "Premium finishes and hardware",
-    ],
-    customization: [
-      {
-        title: "Configurations",
-        items: ["Wall-mounted", "Freestanding", "Corner units", "Extended drawer banks"],
-      },
-      {
-        title: "Mirror Options",
-        items: ["Full-length", "Round accent", "Integrated LED", "Framed designs"],
-      },
-      {
-        title: "Finishes",
-        items: ["Wood veneer", "Lacquer", "Upholstered seat", "Metal handles"],
-      },
-    ],
-    faq: defaultFaq("dressing table"),
-    seoTitle: "Custom Dressing Tables UAE | Al-Awan Furniture",
-    seoDescription:
-      "Bespoke dressing tables and vanity units for UAE bedrooms. Custom storage, mirrors, and premium finishes. Request your free quote.",
-    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
-    relatedProjectCategories: ["Bedrooms"],
-  },
-  {
     slug: "dp-closing",
     name: "DP Closing",
     shortName: "DP Closing",
@@ -358,8 +335,8 @@ export const services: Service[] = [
       "Expert DP closing and finishing work to complete your interior with clean, polished transitions and details.",
     intro:
       "DP closing is the detailed finishing work that gives your interior a seamless, professional appearance. We handle the precise closing of gaps, joints, and transitions between built-in furniture, wall panels, ceilings, and architectural elements — ensuring every corner and edge looks intentional and refined. Essential for new builds, renovations, and custom furniture installations across the UAE.",
-    heroImage: gallery("wall-paneling", ["IMG-20251223-WA0074-1.jpg"])[0],
-    gallery: gallery("wall-paneling", wallPanelImages.slice(3)),
+    heroImage: "",
+    gallery: [],
     benefits: [
       "Clean, seamless interior transitions",
       "Professional finishing around built-ins",
@@ -481,8 +458,8 @@ export const services: Service[] = [
       "Elegant and practical girls room furniture with custom storage, vanity areas, and refined finishes.",
     intro:
       "Design a bedroom she will love coming home to. Our girls room interiors combine graceful aesthetics with smart storage — featuring custom beds, dressing areas, wardrobes, and study spaces finished in colours and materials that reflect her personality. Every element is measured and built for her room, creating a space that is both beautiful and genuinely useful.",
-    heroImage: gallery("girls-rooms", ["IMG-20251223-WA0045.jpg"])[0],
-    gallery: gallery("girls-rooms", kidsImages),
+    heroImage: "",
+    gallery: [],
     benefits: [
       "Personalized design and colour palettes",
       "Integrated vanity and storage",
@@ -799,8 +776,8 @@ export const serviceGroups: ServiceGroup[] = [
     description: "Custom pieces for the heart of your home",
     services: [
       "sofa-bed-upholstery",
-      "custom-sofas-beds",
-      "dressing-tables",
+      "custom-sofas",
+      "custom-beds",
       "vanity-tables",
       "side-tables",
     ],

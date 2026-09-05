@@ -18,14 +18,18 @@ export function ServiceHero({ service }: ServiceHeroProps) {
   return (
     <section className="relative overflow-hidden bg-charcoal grain-overlay">
       <div className="absolute inset-0">
-        <Image
-          src={service.heroImage}
-          alt={service.name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover scale-105"
-        />
+        {service.heroImage ? (
+          <Image
+            src={service.heroImage}
+            alt={service.name}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal-soft to-charcoal" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-br from-charcoal/90 via-charcoal/60 to-charcoal/45" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(160,120,74,0.12),_transparent_60%)]" />
       </div>

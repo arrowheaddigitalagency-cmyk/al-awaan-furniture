@@ -31,17 +31,17 @@ export const showcaseImages = [
     category: "Curtains",
   },
   {
-    src: "/images/services/dressing-tables/IMG-20251223-WA0054.jpg",
-    alt: "Bedroom dressing table design",
+    src: "/images/services/vanity-tables/vanity-01.jpeg",
+    alt: "Custom vanity table design",
     category: "Bedrooms",
   },
   {
     src: "/images/services/sofas-beds/IMG-20251223-WA0072-1.jpg",
-    alt: "Custom sofa and bed upholstery",
-    category: "Upholstery",
+    alt: "Custom bed design",
+    category: "Bedrooms",
   },
   {
-    src: "/images/services/gaming-rooms/IMG-20251223-WA0074-1.jpg",
+    src: "/images/services/gaming-rooms/gaming-01.jpeg",
     alt: "Gaming room interior setup",
     category: "Gaming Rooms",
   },

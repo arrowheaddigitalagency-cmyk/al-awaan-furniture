@@ -57,6 +57,7 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
         </div>
       </section>
 
+      {service.gallery.length > 0 && (
       <section className="section-padding-sm bg-cream/50 relative">
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: "radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0)",
@@ -75,6 +76,7 @@ export function ServicePageContent({ service }: ServicePageContentProps) {
           <ImageGallery images={service.gallery} alt={service.name} />
         </div>
       </section>
+      )}
 
       <section className="section-padding-sm">
         <div className="container-wide">

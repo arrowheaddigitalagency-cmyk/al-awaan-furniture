@@ -54,14 +54,20 @@ export default function ServicesPage() {
                         reversed ? "md:[&>*:first-child]:order-2" : ""
                       }`}
                     >
-                      <div className="image-flash image-glow relative aspect-[4/3] overflow-hidden rounded-lg">
-                        <Image
-                          src={service.heroImage}
-                          alt={service.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        />
+                      <div className="image-flash image-glow relative aspect-[4/3] overflow-hidden rounded-lg bg-charcoal/10">
+                        {service.heroImage ? (
+                          <Image
+                            src={service.heroImage}
+                            alt={service.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                          />
+                        ) : (
+                          <div className="flex h-full min-h-[220px] items-center justify-center bg-gradient-to-br from-charcoal to-charcoal-soft px-6 text-center">
+                            <p className="font-display text-2xl text-ivory/90">{service.name}</p>
+                          </div>
+                        )}
                       </div>
                       <div>
                         <h2 className="text-3xl text-charcoal md:text-4xl">

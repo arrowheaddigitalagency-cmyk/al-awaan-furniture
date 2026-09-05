@@ -15,8 +15,8 @@ export const projectCategories = [
 
 /** Map portfolio categories to their matching service page. */
 export const projectCategoryToServiceSlug: Record<string, string> = {
-  Sofas: "custom-sofas-beds",
-  Bedrooms: "custom-sofas-beds",
+  Sofas: "custom-sofas",
+  Bedrooms: "custom-beds",
   "TV Units": "tv-units",
   Wardrobes: "cupboards",
   "Kids Rooms": "kids-rooms",
@@ -106,13 +106,13 @@ export const projects: Project[] = [
     id: "dressing-01",
     title: "Bedroom Dressing Area",
     category: "Bedrooms",
-    serviceSlug: "dressing-tables",
+    serviceSlug: "vanity-tables",
     description:
       "Custom dressing table with mirror integration and drawer storage, coordinated with bedroom furniture.",
     images: [
-      "/images/services/dressing-tables/IMG-20251223-WA0051.jpg",
-      "/images/services/dressing-tables/IMG-20251223-WA0053-1024x1009.jpg",
-      "/images/services/dressing-tables/IMG-20251223-WA0055-819x1024.jpg",
+      "/images/services/vanity-tables/vanity-01.jpeg",
+      "/images/services/vanity-tables/vanity-02.jpeg",
+      "/images/services/vanity-tables/vanity-03.jpeg",
     ],
     featured: true,
   },
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     id: "sofa-bed-01",
     title: "Master Bedroom Suite",
     category: "Bedrooms",
-    serviceSlug: "custom-sofas-beds",
+    serviceSlug: "custom-beds",
     description:
       "Custom bed design with upholstered headboard and complementary bedside storage.",
     images: [
