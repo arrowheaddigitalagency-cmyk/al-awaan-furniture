@@ -44,9 +44,9 @@ export const projects: Project[] = [
     description:
       "A full-width media wall with integrated display shelving and concealed storage, finished in warm wood tones.",
     images: [
-      "/images/services/tv-units/IMG-20251223-WA0110.jpg",
-      "/images/services/tv-units/IMG-20251223-WA0111-1024x1010.jpg",
-      "/images/services/tv-units/IMG-20251223-WA0112-819x1024.jpg",
+      "/images/services/tv-units/tv-unit-01.jpeg",
+      "/images/services/tv-units/tv-unit-02.jpeg",
+      "/images/services/tv-units/tv-unit-03.jpeg",
     ],
     featured: true,
   },
@@ -124,9 +124,9 @@ export const projects: Project[] = [
     description:
       "Custom bed design with upholstered headboard and complementary bedside storage.",
     images: [
-      "/images/services/sofas-beds/IMG-20251223-WA0071.jpg",
-      "/images/services/sofas-beds/IMG-20251223-WA0068-826x1024.jpg",
-      "/images/services/sofas-beds/IMG-20251223-WA0070-826x1024.jpg",
+      "/images/services/custom-beds/bed-01.jpeg",
+      "/images/services/custom-beds/bed-02.jpeg",
+      "/images/services/custom-beds/bed-03.jpeg",
     ],
     featured: true,
   },
@@ -138,8 +138,8 @@ export const projects: Project[] = [
     description:
       "A clean-lined TV unit with floating shelves and drawer storage for a modern living room.",
     images: [
-      "/images/services/tv-units/IMG-20251223-WA0113-819x1024.jpg",
-      "/images/services/tv-units/IMG-20251223-WA0114-910x1024.jpg",
+      "/images/services/tv-units/tv-unit-04.jpeg",
+      "/images/services/tv-units/tv-unit-05.jpeg",
     ],
   },
   {
@@ -150,8 +150,8 @@ export const projects: Project[] = [
     description:
       "Feature wall with integrated shelving and ambient lighting designed around a gaming desk setup.",
     images: [
-      "/images/services/tv-units/IMG-20251223-WA0115-1024x974.jpg",
-      "/images/services/tv-units/IMG-20251223-WA0116-852x1024.jpg",
+      "/images/services/gaming-rooms/gaming-01.jpeg",
+      "/images/services/gaming-rooms/gaming-02.jpeg",
     ],
   },
 ];

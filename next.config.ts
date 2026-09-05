@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: "/services/custom-beds",
         permanent: true,
       },
+      {
+        source: "/services/dp-closing",
+        destination: "/services",
+        permanent: false,
+      },
     ];
   },
 };

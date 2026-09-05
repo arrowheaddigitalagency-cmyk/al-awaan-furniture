@@ -5,13 +5,29 @@ function gallery(folder: string, files: string[]): string[] {
   return files.map((f) => `/images/services/${folder}/${f}`);
 }
 
-const tvUnitImages = [
-  "IMG-20251223-WA0110.jpg",
-  "IMG-20251223-WA0111-1024x1010.jpg",
-  "IMG-20251223-WA0112-819x1024.jpg",
-  "IMG-20251223-WA0113-819x1024.jpg",
-  "IMG-20251223-WA0114-910x1024.jpg",
-  "IMG-20251223-WA0115-1024x974.jpg",
+const tvUnitImages = Array.from(
+  { length: 12 },
+  (_, i) => `tv-unit-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const customSofaImages = Array.from(
+  { length: 22 },
+  (_, i) => `sofa-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const customBedImages = Array.from(
+  { length: 9 },
+  (_, i) => `bed-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const tvDrawerImages = Array.from(
+  { length: 14 },
+  (_, i) => `tv-drawer-${String(i + 1).padStart(2, "0")}.jpeg`
+);
+
+const girlsRoomImages = [
+  ...Array.from({ length: 5 }, (_, i) => `girls-${String(i + 1).padStart(2, "0")}.png`),
+  ...Array.from({ length: 25 }, (_, i) => `girls-${String(i + 6).padStart(2, "0")}.jpeg`),
 ];
 
 const cupboardImages = [
@@ -74,15 +90,6 @@ const wallPanelImages = [
   "IMG-20251223-WA0065-1-862x1024.jpg",
   "IMG-20251223-WA0066-823x1024.jpg",
   "IMG-20251223-WA0067-835x1024.jpg",
-];
-
-const sofaBedImages = [
-  "IMG-20251223-WA0068-826x1024.jpg",
-  "IMG-20251223-WA0069-830x1024.jpg",
-  "IMG-20251223-WA0070-826x1024.jpg",
-  "IMG-20251223-WA0071.jpg",
-  "IMG-20251223-WA0072-1.jpg",
-  "IMG-20251223-WA0073-756x1024.jpg",
 ];
 
 const defaultFaq = (serviceName: string): Service["faq"] => [
@@ -175,8 +182,8 @@ export const services: Service[] = [
       "Bespoke sofas crafted to your dimensions, style, and comfort preferences across the UAE.",
     intro:
       "Create seating that truly belongs in your home. Our custom sofas are designed around your room size, lifestyle, and aesthetic — from elegant living rooms to inviting lounge corners. Choose configurations, materials, and finishes that reflect how you live, with every detail considered from frame to final stitch.",
-    heroImage: "",
-    gallery: [],
+    heroImage: gallery("custom-sofas", customSofaImages)[0],
+    gallery: gallery("custom-sofas", customSofaImages),
     benefits: [
       "Made to your exact room dimensions",
       "L-shape, sectional, and straight configurations",
@@ -215,8 +222,8 @@ export const services: Service[] = [
       "Bespoke beds crafted to your dimensions, style, and comfort preferences across the UAE.",
     intro:
       "Create a bed that truly belongs in your bedroom. Our custom beds are designed around your room size, storage needs, and aesthetic — from elegant master bedrooms to calm guest rooms. Choose headboard styles, base options, materials, and finishes that reflect how you rest, with every detail considered from frame to final finish.",
-    heroImage: gallery("sofas-beds", sofaBedImages)[0],
-    gallery: gallery("sofas-beds", sofaBedImages),
+    heroImage: gallery("custom-beds", customBedImages)[0],
+    gallery: gallery("custom-beds", customBedImages),
     benefits: [
       "Made to your exact room dimensions",
       "Choice of headboard, frame, and base styles",
@@ -295,7 +302,7 @@ export const services: Service[] = [
       "Media walls and TV units that combine elegant design with practical storage for modern UAE living rooms.",
     intro:
       "Your living room deserves a media wall that anchors the space with style. Our custom TV units are designed around your screen size, room proportions, and storage needs — integrating display areas, concealed cabling, shelving, and ambient details. Whether you prefer a minimalist floating unit or a full feature wall, we create solutions that elevate your entertainment area.",
-    heroImage: gallery("tv-units", ["IMG-20251223-WA0110.jpg"])[0],
+    heroImage: gallery("tv-units", tvUnitImages)[0],
     gallery: gallery("tv-units", tvUnitImages),
     benefits: [
       "Designed around your TV and room size",
@@ -324,49 +331,6 @@ export const services: Service[] = [
       "Custom TV units and media walls in the UAE. Bespoke designs with integrated storage and premium finishes. Get a free quotation.",
     whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["TV Units"],
-  },
-  {
-    slug: "dp-closing",
-    name: "DP Closing",
-    shortName: "DP Closing",
-    category: "interior-finishing",
-    headline: "Professional DP Closing for Flawless Interiors",
-    description:
-      "Expert DP closing and finishing work to complete your interior with clean, polished transitions and details.",
-    intro:
-      "DP closing is the detailed finishing work that gives your interior a seamless, professional appearance. We handle the precise closing of gaps, joints, and transitions between built-in furniture, wall panels, ceilings, and architectural elements — ensuring every corner and edge looks intentional and refined. Essential for new builds, renovations, and custom furniture installations across the UAE.",
-    heroImage: "",
-    gallery: [],
-    benefits: [
-      "Clean, seamless interior transitions",
-      "Professional finishing around built-ins",
-      "Attention to joints and edges",
-      "Complements custom furniture installations",
-      "Polished final appearance",
-    ],
-    customization: [
-      {
-        title: "Applications",
-        items: ["Around wardrobes", "Media wall edges", "Ceiling transitions", "Panel junctions"],
-      },
-      {
-        title: "Finishing",
-        items: ["Paint-ready surfaces", "Colour-matched closing", "Shadow gap details", "Trim integration"],
-      },
-    ],
-    faq: [
-      {
-        question: "What is DP closing?",
-        answer:
-          "DP closing refers to the detailed finishing work that closes gaps and creates clean transitions between furniture, panels, walls, and ceilings for a polished interior result.",
-      },
-      ...defaultFaq("DP closing").slice(1),
-    ],
-    seoTitle: "DP Closing Services UAE | Al-Awan Furniture",
-    seoDescription:
-      "Professional DP closing and interior finishing in the UAE. Seamless transitions and polished details for custom interiors. Get a free quote.",
-    whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
-    relatedProjectCategories: ["Wall Panels"],
   },
   {
     slug: "curtains",
@@ -458,8 +422,8 @@ export const services: Service[] = [
       "Elegant and practical girls room furniture with custom storage, vanity areas, and refined finishes.",
     intro:
       "Design a bedroom she will love coming home to. Our girls room interiors combine graceful aesthetics with smart storage — featuring custom beds, dressing areas, wardrobes, and study spaces finished in colours and materials that reflect her personality. Every element is measured and built for her room, creating a space that is both beautiful and genuinely useful.",
-    heroImage: "",
-    gallery: [],
+    heroImage: gallery("girls-rooms", girlsRoomImages)[0],
+    gallery: gallery("girls-rooms", girlsRoomImages),
     benefits: [
       "Personalized design and colour palettes",
       "Integrated vanity and storage",
@@ -730,16 +694,16 @@ export const services: Service[] = [
   },
   {
     slug: "tv-drawers",
-    name: "TV Drawers & Storage Units",
+    name: "TV Drawers",
     shortName: "TV Drawers",
     category: "storage-media",
-    headline: "TV Drawers & Storage Units for Organized Living",
+    headline: "TV Drawers for Organized Living",
     description:
       "Functional TV drawer units and media storage designed to keep your living space tidy and elegant.",
     intro:
-      "Keep your entertainment area organized with custom TV drawer and storage units. Designed to sit beneath or alongside your media wall, these units provide concealed storage for remotes, gaming equipment, media devices, and everyday items — all finished to match your TV unit and room interior. Practical storage that does not compromise on design.",
-    heroImage: gallery("tv-drawers", ["IMG-20251223-WA0116-852x1024.jpg"])[0],
-    gallery: gallery("tv-drawers", tvUnitImages),
+      "Keep your entertainment area organized with custom TV drawers. Designed to sit beneath or alongside your media wall, these units provide concealed storage for remotes, gaming equipment, media devices, and everyday items — all finished to match your TV unit and room interior. Practical storage that does not compromise on design.",
+    heroImage: gallery("tv-drawers", tvDrawerImages)[0],
+    gallery: gallery("tv-drawers", tvDrawerImages),
     benefits: [
       "Concealed media and accessory storage",
       "Matched to your TV unit design",
@@ -761,10 +725,10 @@ export const services: Service[] = [
         items: ["Matching media wall panels", "Contrast accents", "Handle-less push-to-open"],
       },
     ],
-    faq: defaultFaq("TV storage unit"),
-    seoTitle: "TV Drawers & Storage Units UAE | Al-Awan Furniture",
+    faq: defaultFaq("TV drawers"),
+    seoTitle: "TV Drawers UAE | Al-Awan Furniture",
     seoDescription:
-      "Custom TV drawers and media storage units in the UAE. Organized, elegant storage designed around your entertainment area. Get a free quote.",
+      "Custom TV drawers in the UAE. Organized, elegant storage designed around your entertainment area. Get a free quote.",
     whatsappMessage: DEFAULT_WHATSAPP_MESSAGE,
     relatedProjectCategories: ["TV Units"],
   },
@@ -796,7 +760,7 @@ export const serviceGroups: ServiceGroup[] = [
   {
     title: "Interior Finishing",
     description: "Details that complete your interior",
-    services: ["dp-closing", "curtains", "wall-paneling"],
+    services: ["curtains", "wall-paneling"],
   },
   {
     title: "Specialized Rooms",

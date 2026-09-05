@@ -6,7 +6,7 @@ import { CallImageLink } from "@/components/conversion/CallImageLink";
 
 export const showcaseImages = [
   {
-    src: "/images/services/tv-units/IMG-20251223-WA0114-910x1024.jpg",
+    src: "/images/services/tv-units/tv-unit-01.jpeg",
     alt: "Custom TV unit with integrated storage",
     category: "TV Units",
   },
@@ -36,9 +36,14 @@ export const showcaseImages = [
     category: "Bedrooms",
   },
   {
-    src: "/images/services/sofas-beds/IMG-20251223-WA0072-1.jpg",
+    src: "/images/services/custom-beds/bed-01.jpeg",
     alt: "Custom bed design",
     category: "Bedrooms",
+  },
+  {
+    src: "/images/services/custom-sofas/sofa-01.jpeg",
+    alt: "Custom sofa design",
+    category: "Sofas",
   },
   {
     src: "/images/services/gaming-rooms/gaming-01.jpeg",
