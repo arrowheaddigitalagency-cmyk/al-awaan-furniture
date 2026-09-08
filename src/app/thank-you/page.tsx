@@ -4,6 +4,7 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { createMetadata } from "@/lib/seo";
+import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
 
 export const metadata = createMetadata({
   title: "Thank You | Al-Awan Furniture",
@@ -53,15 +54,14 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
             </p>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <a
+              <WhatsAppLink
                 href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
-                target="_blank"
-                rel="noopener noreferrer"
+                payload={{ location: "thank_you" }}
                 className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-[#25D366] px-5 py-4 text-sm font-semibold text-white shadow-md shadow-[#25D366]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-lg"
               >
                 <WhatsAppIcon size={20} />
                 WhatsApp Us
-              </a>
+              </WhatsAppLink>
               <a
                 href={PHONE_TEL}
                 className="inline-flex items-center justify-center gap-2.5 rounded-lg border border-bronze/50 bg-gradient-to-r from-bronze to-bronze-dark px-5 py-4 text-sm font-semibold text-white shadow-md shadow-bronze/20 transition-all hover:-translate-y-0.5 hover:shadow-lg"

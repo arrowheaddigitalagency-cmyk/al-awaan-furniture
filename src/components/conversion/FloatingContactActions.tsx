@@ -4,7 +4,7 @@ import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 
 export function FloatingContactActions() {
   const whatsappHref = buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE);
@@ -16,9 +16,10 @@ export function FloatingContactActions() {
     >
       <a
         href={whatsappHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackEvent("whatsapp_click", { location: "floating_stack" })}
+        onClick={(e) => {
+          e.preventDefault();
+          gtagSendEvent(whatsappHref, { location: "floating_stack" });
+        }}
         className="group flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/35 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#25D366]/45"
         aria-label="Chat on WhatsApp"
         title="WhatsApp Us"

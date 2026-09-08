@@ -4,6 +4,7 @@ import { services } from "@/data/services";
 import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { GoogleMap } from "@/components/layout/GoogleMap";
+import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -93,14 +94,13 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a
+                  <WhatsAppLink
                     href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    payload={{ location: "footer" }}
                     className="transition-colors hover:text-bronze-light"
                   >
                     WhatsApp
-                  </a>
+                  </WhatsAppLink>
                 </li>
                 <li>
                   <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-bronze-light">

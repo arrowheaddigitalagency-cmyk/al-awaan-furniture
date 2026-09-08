@@ -8,6 +8,7 @@ import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/consta
 import { buildWhatsAppLink } from "@/lib/utils";
 import { Phone } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { gtagSendEvent } from "@/lib/tracking";
 
 interface CTASectionProps {
   title?: string;
@@ -22,6 +23,8 @@ export function CTASection({
   whatsappMessage = DEFAULT_WHATSAPP_MESSAGE,
   showPhone = true,
 }: CTASectionProps) {
+  const whatsappHref = buildWhatsAppLink(whatsappMessage);
+
   return (
     <section className="section-gold-dark relative isolate mb-0 overflow-hidden py-20 pb-0 md:py-28 md:pb-0">
       <div className="absolute inset-0">
@@ -56,10 +59,14 @@ export function CTASection({
               Get Free Quote
             </Button>
             <Button
-              href={buildWhatsAppLink(whatsappMessage)}
+              href={whatsappHref}
               variant="whatsapp"
               size="lg"
               external
+              onClick={(e) => {
+                e.preventDefault();
+                gtagSendEvent(whatsappHref, { location: "cta_section" });
+              }}
             >
               <WhatsAppIcon size={20} />
               WhatsApp Us

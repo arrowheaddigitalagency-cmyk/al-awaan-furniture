@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 import type { Service } from "@/types";
 
 interface ServiceHeroProps {
@@ -73,14 +73,14 @@ export function ServiceHero({ service }: ServiceHeroProps) {
             </Button>
             <a
               href={buildWhatsAppLink(service.whatsappMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                trackEvent("whatsapp_click", {
+              onClick={(e) => {
+                e.preventDefault();
+                const href = buildWhatsAppLink(service.whatsappMessage);
+                gtagSendEvent(href, {
                   location: "service_hero",
                   service: service.slug,
-                })
-              }
+                });
+              }}
               className="inline-flex items-center justify-center gap-2.5 rounded-md border border-[#25D366] bg-[#25D366] px-9 py-4 text-sm font-medium text-white shadow-lg shadow-[#25D366]/30 transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-xl"
             >
               <WhatsAppIcon size={20} />

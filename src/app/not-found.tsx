@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/layout/PageHero";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { pageBanners } from "@/lib/banners";
@@ -29,14 +31,14 @@ export default function NotFound() {
               <Button href="/services" variant="outline" size="lg">
                 Explore Services
               </Button>
-              <Button
+              <WhatsAppLink
                 href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
-                variant="whatsapp"
-                size="lg"
-                external
+                payload={{ location: "not_found" }}
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#25D366] bg-[#25D366] px-9 py-4 text-sm font-medium text-white shadow-lg shadow-[#25D366]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-xl"
               >
+                <WhatsAppIcon size={18} />
                 WhatsApp Us
-              </Button>
+              </WhatsAppLink>
             </div>
           </div>
         </div>

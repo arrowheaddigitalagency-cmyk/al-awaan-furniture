@@ -1,17 +1,22 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { type ButtonHTMLAttributes, type ReactNode } from "react";
+import {
+  type ButtonHTMLAttributes,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 
 type Variant = "primary" | "secondary" | "outline" | "ghost" | "whatsapp" | "luxury";
 type Size = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
   variant?: Variant;
   size?: Size;
   href?: string;
   external?: boolean;
   children: ReactNode;
   className?: string;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 const variants: Record<Variant, string> = {
@@ -42,6 +47,7 @@ export function Button({
   external,
   children,
   className,
+  onClick,
   ...props
 }: ButtonProps) {
   const classes = cn(
@@ -59,6 +65,7 @@ export function Button({
           className={classes}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={onClick}
         >
           {children}
         </a>
@@ -72,7 +79,7 @@ export function Button({
   }
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );

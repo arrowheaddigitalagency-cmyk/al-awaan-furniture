@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { DEFAULT_WHATSAPP_MESSAGE, PHONE_TEL } from "@/lib/constants";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 import { buildWhatsAppLink, cn } from "@/lib/utils";
 
 interface CallImageLinkProps {
@@ -41,9 +41,10 @@ export function CallImageLink({
         </a>
         <a
           href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackEvent("whatsapp_click", { location })}
+          onClick={(e) => {
+            e.preventDefault();
+            gtagSendEvent(whatsappHref, { location });
+          }}
           className="image-contact-icon image-contact-icon--whatsapp"
           aria-label="WhatsApp Al-Awan Furniture"
         >

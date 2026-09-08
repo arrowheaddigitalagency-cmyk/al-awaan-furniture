@@ -8,7 +8,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Phone, Sparkles } from "lucide-r
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 import { HeroTrustCarousel } from "@/components/home/HeroTrustCarousel";
 
 const heroContent = {
@@ -150,9 +150,12 @@ export function HeroSlider() {
                   </a>
                   <a
                 href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      gtagSendEvent(buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE), {
+                        location: "hero",
+                      });
+                    }}
                     className="image-contact-icon image-contact-icon--whatsapp h-11 w-11 sm:h-12 sm:w-12"
                     aria-label="WhatsApp Al-Awan Furniture"
                   >

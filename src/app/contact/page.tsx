@@ -9,6 +9,7 @@ import { PHONE_DISPLAY, PHONE_TEL, BUSINESS_ADDRESS, MAP_URL, CONTACT_EMAIL, DEF
 import { buildWhatsAppLink } from "@/lib/utils";
 import { pageBanners } from "@/lib/banners";
 import { createMetadata } from "@/lib/seo";
+import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
 
 export const metadata = createMetadata({
   title: "Contact & Get a Quote | Al-Awan Furniture UAE",
@@ -76,10 +77,9 @@ export default function ContactPage() {
                     </div>
                   </a>
 
-                  <a
+                  <WhatsAppLink
                     href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    payload={{ location: "contact_page" }}
                     className="flex items-center gap-3 text-charcoal hover:text-bronze"
                   >
                     <WhatsAppIcon size={22} className="text-[#25D366]" />
@@ -87,7 +87,7 @@ export default function ContactPage() {
                       <p className="text-sm font-medium">WhatsApp</p>
                       <p className="text-sm text-warm-gray">Chat with our team</p>
                     </div>
-                  </a>
+                  </WhatsAppLink>
 
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}

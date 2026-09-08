@@ -4,10 +4,11 @@ import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 
 export function MobileConversionBar() {
   const whatsappMessage = DEFAULT_WHATSAPP_MESSAGE;
+  const whatsappHref = buildWhatsAppLink(whatsappMessage);
 
   return (
     <div
@@ -35,10 +36,11 @@ export function MobileConversionBar() {
           </a>
 
           <a
-            href={buildWhatsAppLink(whatsappMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackEvent("whatsapp_click", { location: "mobile_bar" })}
+            href={whatsappHref}
+            onClick={(e) => {
+              e.preventDefault();
+              gtagSendEvent(whatsappHref, { location: "mobile_bar" });
+            }}
             className="group flex items-center justify-center gap-2.5 px-3 py-3.5 transition-colors active:bg-white/5"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md shadow-[#25D366]/35">

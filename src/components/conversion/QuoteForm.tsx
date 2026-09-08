@@ -9,9 +9,10 @@ import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { getStoredAttribution } from "@/lib/attribution";
 import { submitQuoteToWeb3Forms } from "@/lib/web3forms";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
 
 interface QuoteFormProps {
   defaultService?: string;
@@ -281,9 +282,10 @@ export function QuoteForm({
             </a>
             <a
               href={fallbackWhatsApp}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("whatsapp_click", { location: "form_error" })}
+              onClick={(e) => {
+                e.preventDefault();
+                gtagSendEvent(fallbackWhatsApp, { location: "form_error" });
+              }}
               className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-semibold text-white"
             >
               <WhatsAppIcon size={14} />
@@ -309,14 +311,13 @@ export function QuoteForm({
           Call us
         </Link>{" "}
         or{" "}
-        <a
+        <WhatsAppLink
           href={fallbackWhatsApp}
-          target="_blank"
-          rel="noopener noreferrer"
+          payload={{ location: "form_footer" }}
           className="font-semibold text-[#1a9e4b] hover:underline"
         >
           WhatsApp
-        </a>
+        </WhatsAppLink>
       </p>
     </form>
   );
