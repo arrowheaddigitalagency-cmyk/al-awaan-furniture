@@ -4,7 +4,7 @@ import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { gtagSendEvent, trackEvent } from "@/lib/tracking";
+import { gtagSendEvent } from "@/lib/tracking";
 
 export function FloatingContactActions() {
   const whatsappHref = buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE);
@@ -18,7 +18,7 @@ export function FloatingContactActions() {
         href={whatsappHref}
         onClick={(e) => {
           e.preventDefault();
-          gtagSendEvent(whatsappHref, { location: "floating_stack" });
+          gtagSendEvent(whatsappHref, "whatsapp_click", { location: "floating_stack" });
         }}
         className="group flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/35 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#25D366]/45"
         aria-label="Chat on WhatsApp"
@@ -29,7 +29,10 @@ export function FloatingContactActions() {
 
       <a
         href={PHONE_TEL}
-        onClick={() => trackEvent("click_to_call", { location: "floating_stack" })}
+        onClick={(e) => {
+          e.preventDefault();
+          gtagSendEvent(PHONE_TEL, "call_click", { location: "floating_stack" });
+        }}
         className="group flex h-14 w-14 items-center justify-center rounded-full border border-bronze/40 bg-gradient-to-br from-bronze to-bronze-dark text-white shadow-lg shadow-bronze/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-bronze/40"
         aria-label="Call us now"
         title="Call Now"

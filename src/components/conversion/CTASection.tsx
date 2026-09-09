@@ -65,14 +65,22 @@ export function CTASection({
               external
               onClick={(e) => {
                 e.preventDefault();
-                gtagSendEvent(whatsappHref, { location: "cta_section" });
+                gtagSendEvent(whatsappHref, "whatsapp_click", { location: "cta_section" });
               }}
             >
               <WhatsAppIcon size={20} />
               WhatsApp Us
             </Button>
             {showPhone && (
-              <Button href={PHONE_TEL} variant="luxury" size="lg">
+              <Button
+                href={PHONE_TEL}
+                variant="luxury"
+                size="lg"
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtagSendEvent(PHONE_TEL, "call_click", { location: "cta_section" });
+                }}
+              >
                 <Phone className="h-4 w-4" />
                 Call {PHONE_DISPLAY}
               </Button>

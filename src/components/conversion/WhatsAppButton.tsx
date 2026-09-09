@@ -23,7 +23,7 @@ export function WhatsAppButton({
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    gtagSendEvent(href, { label, location: variant });
+    gtagSendEvent(href, "whatsapp_click", { label, location: variant });
   };
 
   if (variant === "floating") {

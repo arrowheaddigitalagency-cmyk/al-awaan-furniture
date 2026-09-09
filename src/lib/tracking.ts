@@ -3,10 +3,13 @@ export type TrackingEvent =
   | "form_start"
   | "form_submit"
   | "click_to_call"
+  | "call_click"
   | "whatsapp_click"
   | "service_view"
   | "project_view"
   | "cta_click";
+
+export type GtagNavEvent = "whatsapp_click" | "call_click";
 
 export type TrackingPayload = Record<string, string | number | boolean | undefined>;
 
@@ -14,7 +17,7 @@ declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
     gtag?: (...args: unknown[]) => void;
-    gtagSendEvent?: (url: string) => boolean;
+    gtagSendEvent?: (url: string, eventName?: GtagNavEvent) => boolean;
   }
 }
 
@@ -37,11 +40,12 @@ export function trackEvent(
 }
 
 /**
- * Google Ads delayed-navigation helper for WhatsApp clicks.
- * Fires `whatsapp_click`, then navigates after the event is sent (or 2s timeout).
+ * Google Ads delayed-navigation helper.
+ * Fires the conversion event, then navigates after send (or 2s timeout).
  */
 export function gtagSendEvent(
   url: string,
+  eventName: GtagNavEvent,
   payload: TrackingPayload = {}
 ): false {
   if (typeof window === "undefined") return false;
@@ -54,13 +58,13 @@ export function gtagSendEvent(
 
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({
-    event: "whatsapp_click",
+    event: eventName,
     ...payload,
     timestamp: Date.now(),
   });
 
   if (typeof window.gtag === "function") {
-    window.gtag("event", "whatsapp_click", {
+    window.gtag("event", eventName, {
       ...payload,
       event_callback: callback,
       event_timeout: 2000,
@@ -71,7 +75,7 @@ export function gtagSendEvent(
 
   window.dispatchEvent(
     new CustomEvent("alawan_track", {
-      detail: { event: "whatsapp_click", ...payload, timestamp: Date.now() },
+      detail: { event: eventName, ...payload, timestamp: Date.now() },
     })
   );
 

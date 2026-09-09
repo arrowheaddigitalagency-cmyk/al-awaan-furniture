@@ -5,6 +5,7 @@ import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME, BUSINESS_ADDRESS, MAP_URL, CONTACT
 import { buildWhatsAppLink } from "@/lib/utils";
 import { GoogleMap } from "@/components/layout/GoogleMap";
 import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
+import { CallLink } from "@/components/conversion/CallLink";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -89,9 +90,13 @@ export function Footer() {
               </h3>
               <ul className="space-y-3 text-sm text-ivory/65">
                 <li>
-                  <a href={PHONE_TEL} className="transition-colors hover:text-bronze-light">
+                  <CallLink
+                    href={PHONE_TEL}
+                    payload={{ location: "footer" }}
+                    className="transition-colors hover:text-bronze-light"
+                  >
                     {PHONE_DISPLAY}
-                  </a>
+                  </CallLink>
                 </li>
                 <li>
                   <WhatsAppLink

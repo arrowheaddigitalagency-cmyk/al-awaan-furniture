@@ -110,14 +110,14 @@ export default function RootLayout({
           gtag('config', '${GA_ID}');
           gtag('config', '${AW_ID}');
         `}</Script>
-        <Script id="gtag-whatsapp-click" strategy="afterInteractive">{`
-          function gtagSendEvent(url) {
+        <Script id="gtag-delayed-nav" strategy="afterInteractive">{`
+          function gtagSendEvent(url, eventName) {
             var callback = function () {
               if (typeof url === 'string') {
                 window.location = url;
               }
             };
-            gtag('event', 'whatsapp_click', {
+            gtag('event', eventName || 'whatsapp_click', {
               'event_callback': callback,
               'event_timeout': 2000
             });

@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Phone } from "lucide-react";
 import { services } from "@/data/services";
 import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
@@ -13,6 +12,7 @@ import { gtagSendEvent, trackEvent } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { WhatsAppLink } from "@/components/conversion/WhatsAppLink";
+import { CallLink } from "@/components/conversion/CallLink";
 
 interface QuoteFormProps {
   defaultService?: string;
@@ -274,7 +274,10 @@ export function QuoteForm({
           <div className="mt-3 flex flex-wrap gap-2">
             <a
               href={PHONE_TEL}
-              onClick={() => trackEvent("click_to_call", { location: "form_error" })}
+              onClick={(e) => {
+                e.preventDefault();
+                gtagSendEvent(PHONE_TEL, "call_click", { location: "form_error" });
+              }}
               className="inline-flex items-center gap-2 rounded-lg bg-bronze px-4 py-2 text-xs font-semibold text-white"
             >
               <Phone className="h-3.5 w-3.5" />
@@ -284,7 +287,7 @@ export function QuoteForm({
               href={fallbackWhatsApp}
               onClick={(e) => {
                 e.preventDefault();
-                gtagSendEvent(fallbackWhatsApp, { location: "form_error" });
+                gtagSendEvent(fallbackWhatsApp, "whatsapp_click", { location: "form_error" });
               }}
               className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-semibold text-white"
             >
@@ -307,9 +310,13 @@ export function QuoteForm({
 
       <p className="text-center text-xs text-warm-gray">
         Prefer instant contact?{" "}
-        <Link href={PHONE_TEL} className="font-semibold text-bronze hover:underline">
+        <CallLink
+          href={PHONE_TEL}
+          payload={{ location: "form_footer" }}
+          className="font-semibold text-bronze hover:underline"
+        >
           Call us
-        </Link>{" "}
+        </CallLink>{" "}
         or{" "}
         <WhatsAppLink
           href={fallbackWhatsApp}

@@ -4,7 +4,7 @@ import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY, PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { gtagSendEvent, trackEvent } from "@/lib/tracking";
+import { gtagSendEvent } from "@/lib/tracking";
 
 export function MobileConversionBar() {
   const whatsappMessage = DEFAULT_WHATSAPP_MESSAGE;
@@ -21,7 +21,10 @@ export function MobileConversionBar() {
         <div className="grid grid-cols-2">
           <a
             href={PHONE_TEL}
-            onClick={() => trackEvent("click_to_call", { location: "mobile_bar" })}
+            onClick={(e) => {
+              e.preventDefault();
+              gtagSendEvent(PHONE_TEL, "call_click", { location: "mobile_bar" });
+            }}
             className="group flex items-center justify-center gap-2.5 border-r border-white/10 px-3 py-3.5 transition-colors active:bg-white/5"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-bronze to-bronze-dark text-white shadow-md shadow-bronze/30">
@@ -39,7 +42,7 @@ export function MobileConversionBar() {
             href={whatsappHref}
             onClick={(e) => {
               e.preventDefault();
-              gtagSendEvent(whatsappHref, { location: "mobile_bar" });
+              gtagSendEvent(whatsappHref, "whatsapp_click", { location: "mobile_bar" });
             }}
             className="group flex items-center justify-center gap-2.5 px-3 py-3.5 transition-colors active:bg-white/5"
           >

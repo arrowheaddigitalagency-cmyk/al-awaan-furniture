@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { gtagSendEvent, trackEvent } from "@/lib/tracking";
+import { gtagSendEvent } from "@/lib/tracking";
 import type { Service } from "@/types";
 
 interface ServiceHeroProps {
@@ -76,7 +76,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               onClick={(e) => {
                 e.preventDefault();
                 const href = buildWhatsAppLink(service.whatsappMessage);
-                gtagSendEvent(href, {
+                gtagSendEvent(href, "whatsapp_click", {
                   location: "service_hero",
                   service: service.slug,
                 });
@@ -89,12 +89,13 @@ export function ServiceHero({ service }: ServiceHeroProps) {
           </div>
           <a
             href={PHONE_TEL}
-            onClick={() =>
-              trackEvent("click_to_call", {
+            onClick={(e) => {
+              e.preventDefault();
+              gtagSendEvent(PHONE_TEL, "call_click", {
                 location: "service_hero",
                 service: service.slug,
-              })
-            }
+              });
+            }}
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-ivory/60 transition-colors hover:text-ivory"
           >
             <Phone className="h-4 w-4 text-bronze-light" />

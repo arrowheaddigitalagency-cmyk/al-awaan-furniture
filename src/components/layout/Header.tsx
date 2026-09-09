@@ -10,7 +10,7 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { services, serviceGroups } from "@/data/services";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
-import { trackEvent } from "@/lib/tracking";
+import { gtagSendEvent } from "@/lib/tracking";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -105,8 +105,9 @@ function MobileMenu({
               <div className="mt-8 space-y-3 border-t border-border pt-6">
                 <a
                   href={PHONE_TEL}
-                  onClick={() => {
-                    trackEvent("click_to_call", { location: "mobile_menu" });
+                  onClick={(e) => {
+                    e.preventDefault();
+                    gtagSendEvent(PHONE_TEL, "call_click", { location: "mobile_menu" });
                     onClose();
                   }}
                   className="flex items-center gap-3 rounded-lg border border-bronze/25 bg-cream/60 px-4 py-3 text-base font-medium text-charcoal"
@@ -278,7 +279,10 @@ export function Header() {
             <div className="hidden items-center gap-4 lg:flex">
               <a
                 href={PHONE_TEL}
-                onClick={() => trackEvent("click_to_call", { location: "header" })}
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtagSendEvent(PHONE_TEL, "call_click", { location: "header" });
+                }}
                 className={cn(
                   "flex items-center gap-2.5 text-sm font-semibold transition-colors",
                   isOverlay ? "text-ivory hover:text-bronze-light" : "text-charcoal hover:text-bronze"

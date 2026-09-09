@@ -3,23 +3,23 @@
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 import { gtagSendEvent, type TrackingPayload } from "@/lib/tracking";
 
-interface WhatsAppLinkProps
+interface CallLinkProps
   extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "onClick"> {
   href: string;
   children: ReactNode;
   payload?: TrackingPayload;
 }
 
-export function WhatsAppLink({
+export function CallLink({
   href,
   children,
   payload,
   className,
   ...rest
-}: WhatsAppLinkProps) {
+}: CallLinkProps) {
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    gtagSendEvent(href, "whatsapp_click", payload);
+    gtagSendEvent(href, "call_click", payload);
   };
 
   return (

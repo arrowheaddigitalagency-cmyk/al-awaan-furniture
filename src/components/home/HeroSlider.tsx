@@ -8,7 +8,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Phone, Sparkles } from "lucide-r
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_TEL, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { gtagSendEvent, trackEvent } from "@/lib/tracking";
+import { gtagSendEvent } from "@/lib/tracking";
 import { HeroTrustCarousel } from "@/components/home/HeroTrustCarousel";
 
 const heroContent = {
@@ -142,7 +142,10 @@ export function HeroSlider() {
                 <div className="mt-5 flex items-center gap-3">
                   <a
                     href={PHONE_TEL}
-                    onClick={() => trackEvent("click_to_call", { location: "hero" })}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      gtagSendEvent(PHONE_TEL, "call_click", { location: "hero" });
+                    }}
                     className="image-contact-icon image-contact-icon--call h-11 w-11 sm:h-12 sm:w-12"
                     aria-label="Call Al-Awan Furniture"
                   >
@@ -152,7 +155,7 @@ export function HeroSlider() {
                 href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
                     onClick={(e) => {
                       e.preventDefault();
-                      gtagSendEvent(buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE), {
+                      gtagSendEvent(buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE), "whatsapp_click", {
                         location: "hero",
                       });
                     }}
